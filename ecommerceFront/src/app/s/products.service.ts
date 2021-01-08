@@ -14,7 +14,7 @@ export class ProductsService {
 
   products: Product[];
 
-  loadProducts() {
+  loadProducts(): void {
     this._http
       .get(this._apiSetting.url.getProduct, this._apiSetting.option)
       .subscribe(
