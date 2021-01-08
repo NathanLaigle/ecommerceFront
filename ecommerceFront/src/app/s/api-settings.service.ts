@@ -13,8 +13,9 @@ export class ApiSettingsService {
 
   // ApiURL
   url = {
-    getProduct: 'URL_HERE',
-    postUser: 'URL_HERE',
-    getCategory: 'URL_HERE',
+    product: 'URL_HERE',
+    user: 'URL_HERE',
+    category: 'URL_HERE',
+    order: 'URL_HERE',
   };
 }

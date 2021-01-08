@@ -13,7 +13,7 @@ export class ProductsService {
   ) {}
 
   private option = this._apiSettings.option;
-  private url = this._apiSettings.url.getProduct;
+  private url = this._apiSettings.url.product;
 
   public products: Product[];
 

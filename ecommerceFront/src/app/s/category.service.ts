@@ -12,7 +12,7 @@ export class CategoryService {
     private _apiSettings: ApiSettingsService
   ) {}
 
-  private url = this._apiSettings.url.getCategory;
+  private url = this._apiSettings.url.category;
   private option = this._apiSettings.option;
 
   public category: Category;

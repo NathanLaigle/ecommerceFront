@@ -18,7 +18,7 @@ export class UsersService {
   ) {}
 
   private option = this._apiSettings.option;
-  private url = this._apiSettings.url.postUser;
+  private url = this._apiSettings.url.user;
 
   public userCurrent: User;
 
@@ -35,7 +35,7 @@ export class UsersService {
   // Account creation
   userCreate(user: User): void {
     this._http
-      .post(this.url, { requestType: 'connexion', data: user }, this.option)
+      .post(this.url, { requestType: 'creation', data: user }, this.option)
       .subscribe(
         (data) => console.log(data),
         (error) => console.log(error)
