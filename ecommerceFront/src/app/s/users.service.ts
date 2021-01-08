@@ -20,6 +20,8 @@ export class UsersService {
   private option = this._apiSettings.option;
   private url = this._apiSettings.url.postUser;
 
+  userCurrent: User;
+
   // Connexion
   userConnect(login: login) {
     this._http
