@@ -15,7 +15,20 @@ export class CategoryService {
   private url = this._apiSettings.url.category;
   private option = this._apiSettings.option;
 
-  public category: Category;
+  public category: Category[] = [
+    {
+      id: 0,
+      name: 'Homme',
+    },
+    {
+      id: 1,
+      name: 'Femme',
+    },
+    {
+      id: 3,
+      name: 'Accessoire',
+    },
+  ];
 
   loadCategroy(): void {
     this._http.get(this.url, this.option).subscribe(
