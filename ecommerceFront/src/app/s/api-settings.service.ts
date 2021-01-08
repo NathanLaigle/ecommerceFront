@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiSettingService {
+export class ApiSettingsService {
   constructor() {}
 
   // Headers option
@@ -14,6 +14,6 @@ export class ApiSettingService {
   // ApiURL
   url = {
     getProduct: 'URL_HERE',
-    postProduct: 'URL_HERE',
+    postUser: 'URL_HERE',
   };
 }

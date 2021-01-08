@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../i/product';
-import { ApiSettingService } from './api-setting.service';
+import { ApiSettingsService } from './api-settings.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +9,14 @@ import { ApiSettingService } from './api-setting.service';
 export class ProductsService {
   constructor(
     private _http: HttpClient,
-    private _apiSetting: ApiSettingService
+    private _apiSettings: ApiSettingsService
   ) {}
 
   products: Product[];
 
   loadProducts(): void {
     this._http
-      .get(this._apiSetting.url.getProduct, this._apiSetting.option)
+      .get(this._apiSettings.url.getProduct, this._apiSettings.option)
       .subscribe(
         (data) => console.log(data),
         (error) => console.log(error)
