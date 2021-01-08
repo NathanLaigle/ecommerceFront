@@ -17,9 +17,9 @@ export class ProductsService {
 
   public products: Product[];
 
-  loadProducts(): void {
+  loadProducts() {
     this._http.get(this.url, this.option).subscribe(
-      (data) => console.log(data),
+      (data: Product[]) => setTimeout(() => (this.products = data)),
       (error) => console.log(error)
     );
   }
