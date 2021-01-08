@@ -2,11 +2,35 @@
  * Imports
  */
 
-@import './assets/css/n-frame.min.css';
+@import './assets/css/n-frame.min.css',
+'./assets/css/vars.scss',
+'https://fonts.googleapis.com/css2?family=Inter&display=swap';
 
 /*
- * Vars
+ * Typo
  */
 
-$charter-blue: #0A1F35;
-$charter-pink: #FF5258;
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+
+/*
+ * Global class
+ */
+
+.charter-blue {
+    color: $charter-blue;
+}
+
+.charter-pink {
+    color: $charter-pink;
+}
+
+.bg-charter-blue {
+    background: $charter-blue;
+}
+
+.bg-charter-pink {
+    background: $charter-pink;
+}
