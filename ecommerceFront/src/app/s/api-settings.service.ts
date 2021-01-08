@@ -15,5 +15,6 @@ export class ApiSettingsService {
   url = {
     getProduct: 'URL_HERE',
     postUser: 'URL_HERE',
+    getCategory: 'URL_HERE',
   };
 }
