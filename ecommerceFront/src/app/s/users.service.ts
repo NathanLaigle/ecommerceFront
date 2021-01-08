@@ -20,7 +20,7 @@ export class UsersService {
   private option = this._apiSettings.option;
   private url = this._apiSettings.url.postUser;
 
-  userCurrent: User;
+  public userCurrent: User;
 
   // Connexion
   userConnect(login: login) {

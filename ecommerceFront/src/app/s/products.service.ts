@@ -12,14 +12,15 @@ export class ProductsService {
     private _apiSettings: ApiSettingsService
   ) {}
 
-  products: Product[];
+  private option = this._apiSettings.option;
+  private url = this._apiSettings.url.getProduct;
+
+  public products: Product[];
 
   loadProducts(): void {
-    this._http
-      .get(this._apiSettings.url.getProduct, this._apiSettings.option)
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      );
+    this._http.get(this.url, this.option).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
   }
 }
