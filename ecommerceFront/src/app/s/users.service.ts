@@ -23,7 +23,7 @@ export class UsersService {
   public userCurrent: User;
 
   // Connexion
-  userConnect(login: login) {
+  userConnect(login: login): void {
     this._http
       .post(this.url, { requestType: 'connexion', data: login }, this.option)
       .subscribe(
@@ -33,7 +33,7 @@ export class UsersService {
   }
 
   // Account creation
-  userCreate(user: User) {
+  userCreate(user: User): void {
     this._http
       .post(this.url, { requestType: 'connexion', data: user }, this.option)
       .subscribe(
