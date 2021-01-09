@@ -5,7 +5,7 @@
 @import '../../../../assets/css/vars.scss';
 
 /*
- * LOADER
+ * Loader
  */
 
 .loader {
@@ -23,4 +23,8 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+.loader-page {
+    z-index: 9;
 }

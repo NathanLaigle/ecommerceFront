@@ -32,7 +32,7 @@ export class CategoryService {
 
   loadCategroy(): void {
     this._http.get(this.url, this.option).subscribe(
-      (data) => console.log(data),
+      (data: Category[]) => (this.category = data),
       (error) => console.log(error)
     );
   }

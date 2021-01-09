@@ -12,11 +12,14 @@ export class AppComponent implements OnInit, DoCheck {
 
   public products: Product[];
 
+  public loader: boolean = true;
+
   ngOnInit(): void {
     this._products.loadProducts();
   }
 
   ngDoCheck(): void {
     this.products = this._products.products;
+    setTimeout(() => (this.loader = false), 1500);
   }
 }
