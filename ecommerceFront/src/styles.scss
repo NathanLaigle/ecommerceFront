@@ -4,14 +4,14 @@
 
 @import './assets/css/n-frame.min.css',
 './assets/css/vars.scss',
-'https://fonts.googleapis.com/css2?family=Inter&display=swap';
+'https://fonts.googleapis.com/css2?family=Karla&display=swap"';
 
 /*
  * Typo
  */
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 
@@ -33,4 +33,13 @@
 
 .bg-charter-pink {
     background: $charter-pink;
+}
+
+
+/*
+ * overriding
+ */
+
+.--round {
+    border-radius: 15px;
 }
