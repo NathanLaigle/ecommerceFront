@@ -5,9 +5,13 @@
 @import '../../../../../assets/css/vars.scss';
 
 /*
-   * Mobile nav
-   */
+ * Desktop nav
+ */
 
 .desktop-nav {
     z-index: 10;
+}
+
+.first-element {
+    padding-left: 0;
 }

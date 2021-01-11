@@ -1,0 +1,35 @@
+/*
+ * Home styles
+ */
+
+.first-block {
+    margin-top: 2em;
+    @media (min-width: 768px) {
+        margin-top: 0;
+    }
+}
+
+.content {
+    text-align: center;
+    h1 {
+        font-size: 3.5em;
+    }
+}
+
+.category-display {
+    padding-left: 2em;
+    padding-right: 1em;
+    @media (max-width: 768px) {
+        width: max-content;
+    }
+}
+
+.category-container {
+    @media (max-width: 768px) {
+        width: 100%;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { Product } from './i/product';
 import { NFrameService } from './s/animation/n-frame.service';
 import { ProductsService } from './s/products.service';
@@ -18,7 +18,15 @@ export class AppComponent implements OnInit, DoCheck {
 
   public loader: boolean = true;
 
+  innerWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
+
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
     this._nframe.doAll();
     this._products.loadProducts();
     this.products = this._products.products;
@@ -26,6 +34,6 @@ export class AppComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.products = this._products.products;
-    setTimeout(() => (this.loader = false), 1500);
+    this.loader = false;
   }
 }

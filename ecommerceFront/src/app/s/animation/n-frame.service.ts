@@ -157,7 +157,7 @@ export class NFrameService {
         display: 'none',
         'z-index': '101',
       });
-      $(element).addClass('--bg-success --shadow');
+      $(element).addClass('bg-charter-pink --shadow');
       $('body').prepend(element);
 
       //animation

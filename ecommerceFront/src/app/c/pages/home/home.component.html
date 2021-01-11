@@ -1,1 +1,49 @@
-<p>home works!</p>
+<!-- top page -->
+<div class="--px-2">
+    <div class="--container --g-a-center --g-j-center --vh-30 --vh-md-40 --round --shadow --p-3 bg-charter-blue first-block">
+        <div class="content --d-flex --a-center --j-center --light">
+            <h1 class="charter-pink --w-100">Random</h1>
+            <p class="--py-1">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla deleniti amet corrupti.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- category container -->
+<div class="category-container">
+    <div class="--py-1 --d-flex --a-center category-display">
+        <h2 class="--d-flex --a-center">
+            Catégories :
+        </h2>
+        <div class="--p-1">
+            <div class="--light-shadow --round --p-1 --cursor">
+                Tout
+            </div>
+        </div>
+        <div class="--p-1" *ngFor="let category of categories">
+            <div class="--light-shadow --round --p-1 --cursor">
+                {{category.name}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- products container -->
+<div class="--px-2">
+    <div class="--light-line-bottom"></div>
+    <h2 class="--py-1">Nos produits</h2>
+    <div class="--container --col-2 --col-md-3 --col-lg-4 --col-xl-5 --gap-2">
+        <div class="--container --py-1 --gap-1" *ngFor="let number of numbers">
+            <div class="--container --col-2 --gap-1">
+                <h2>Product Name</h2>
+                <p class="--d-flex --j-end --a-end">12.99€</p>
+            </div>
+            <div class="--vh-40 --light-shadow --round"></div>
+            <div class="--container --col-md-2 --gap-1">
+                <button class="--round --p-1 --light-shadow --cursor">Détails</button>
+                <button class="--round --p-1 --light-shadow --cursor" data-send="cart">Panier</button>
+            </div>
+        </div>
+    </div>
+</div>
