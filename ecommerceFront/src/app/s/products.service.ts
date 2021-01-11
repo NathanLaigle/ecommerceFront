@@ -19,7 +19,7 @@ export class ProductsService {
 
   loadProducts() {
     this._http.get(this.url, this.option).subscribe(
-      (data: Product[]) => setTimeout(() => (this.products = data)),
+      (data: Product[]) => (this.products = data),
       (error) => console.log(error)
     );
   }

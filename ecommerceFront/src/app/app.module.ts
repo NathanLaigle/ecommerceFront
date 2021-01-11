@@ -12,9 +12,10 @@ import { HomeComponent } from './c/pages/home/home.component';
 import { ProductArchiveComponent } from './c/pages/product-archive/product-archive.component';
 import { ProductSingleComponent } from './c/pages/product-single/product-single.component';
 import { MyAccountComponent } from './c/pages/my-account/my-account.component';
+import { CartComponent } from './c/partials/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent, MobileNavbarComponent, DesktopNavbarComponent, Page404Component, HomeComponent, ProductArchiveComponent, ProductSingleComponent, MyAccountComponent],
+  declarations: [AppComponent, LoaderComponent, MobileNavbarComponent, DesktopNavbarComponent, Page404Component, HomeComponent, ProductArchiveComponent, ProductSingleComponent, MyAccountComponent, CartComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

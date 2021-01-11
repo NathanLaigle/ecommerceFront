@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this._products.loadProducts();
+    this.products = this._products.products;
   }
 
   ngDoCheck(): void {
