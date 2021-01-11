@@ -27,14 +27,28 @@ button {
     font-size: 1em;
 }
 
+*::selection {
+    background-color: $charter-pink;
+    color: #fff;
+}
+
 
 /*
  * Global class
  */
 
-*::selection {
-    background-color: $charter-pink;
-    color: #fff;
+a.active-route {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        right: 45%;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $charter-pink;
+    }
 }
 
 .charter-blue {
