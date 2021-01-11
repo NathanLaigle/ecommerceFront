@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { MyAccountComponent } from './c/pages/my-account/my-account.component';
 import { CartComponent } from './c/partials/cart/cart.component';
 import { ProductThumbnailComponent } from './c/partials/product-thumbnail/product-thumbnail.component';
 import { CategoryListComponent } from './c/partials/category-list/category-list.component';
+import { EuroTransformPipe } from './p/euroTransformPipe';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,15 @@ import { CategoryListComponent } from './c/partials/category-list/category-list.
     CartComponent,
     ProductThumbnailComponent,
     CategoryListComponent,
+    EuroTransformPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'fr-FR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

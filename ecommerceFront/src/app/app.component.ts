@@ -9,10 +9,7 @@ import { ProductsService } from './s/products.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, DoCheck {
-  constructor(
-    private _products: ProductsService,
-    private _nframe: NFrameService
-  ) {}
+  constructor(private _nframe: NFrameService) {}
 
   public products: Product[];
 
@@ -28,12 +25,9 @@ export class AppComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
-    this._products.loadProducts();
-    this.products = this._products.products;
   }
 
   ngDoCheck(): void {
-    this.products = this._products.products;
     this.loader = false;
   }
 }

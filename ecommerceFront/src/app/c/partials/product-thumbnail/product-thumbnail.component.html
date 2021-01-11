@@ -1,9 +1,9 @@
 <div class="--container --gap-1">
     <div class="--d-flex --j-between --gap-1">
-        <h3>Name</h3>
-        <p class="--d-flex --j-end --a-end charter-blue">12.99€</p>
+        <h3>{{product.name}}</h3>
+        <p class="--d-flex --j-end --a-end charter-blue">{{product.price | euroTransform | currency:'EUR':true}}</p>
     </div>
-    <div class="--vh-30 --bg-light-grey --light-shadow --round --cursor" data-hover="--shadow"></div>
+    <div class="--vh-30 --bg-light-grey --light-shadow --round --cursor" data-hover="--shadow" style="background: url('https://127.0.0.1:8001/uploads/{{product.picture}}') center center / cover;"></div>
     <div class="--container">
         <button class="--cursor" data-send="cart">Ajouer au panier
             <div data-valid class="bg-whitesmoke --round">Ajouté</div>
