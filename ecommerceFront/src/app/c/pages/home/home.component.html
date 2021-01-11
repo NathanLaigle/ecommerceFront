@@ -33,17 +33,7 @@
 <div class="--px-2">
     <div class="--light-line-bottom"></div>
     <h2 class="--py-1">Nos produits</h2>
-    <div class="--container --col-2 --col-md-3 --col-lg-4 --col-xl-5 --gap-2">
-        <div class="--container --py-1 --gap-1" *ngFor="let number of numbers">
-            <div class="--container --col-2 --gap-1">
-                <h2>Product Name</h2>
-                <p class="--d-flex --j-end --a-end">12.99€</p>
-            </div>
-            <div class="--vh-40 --light-shadow --round"></div>
-            <div class="--container --col-md-2 --gap-1">
-                <button class="--round --p-1 --light-shadow --cursor">Détails</button>
-                <button class="--round --p-1 --light-shadow --cursor" data-send="cart">Panier</button>
-            </div>
-        </div>
+    <div class="--container --col-2 --col-md-3 --col-lg-4 --col-xl-5 --gap-2 product-container">
+        <app-product-single *ngFor="let number of numbers"></app-product-single>
     </div>
 </div>

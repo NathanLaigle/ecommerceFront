@@ -15,7 +15,18 @@ import { MyAccountComponent } from './c/pages/my-account/my-account.component';
 import { CartComponent } from './c/partials/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent, MobileNavbarComponent, DesktopNavbarComponent, Page404Component, HomeComponent, ProductArchiveComponent, ProductSingleComponent, MyAccountComponent, CartComponent],
+  declarations: [
+    AppComponent,
+    LoaderComponent,
+    MobileNavbarComponent,
+    DesktopNavbarComponent,
+    Page404Component,
+    HomeComponent,
+    ProductArchiveComponent,
+    ProductSingleComponent,
+    MyAccountComponent,
+    CartComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

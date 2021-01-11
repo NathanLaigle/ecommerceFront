@@ -13,6 +13,7 @@ export class NFrameService {
     this.hover();
     this.send();
     this.spinHover();
+    this.validButton();
   }
 
   // drop
@@ -157,7 +158,7 @@ export class NFrameService {
         display: 'none',
         'z-index': '101',
       });
-      $(element).addClass('bg-charter-pink --shadow');
+      $(element).addClass('bg-charter-pink');
       $('body').prepend(element);
 
       //animation

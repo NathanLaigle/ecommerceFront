@@ -33,3 +33,10 @@
         }
     }
 }
+
+.product-container {
+    @media (min-width: 768px) {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+}

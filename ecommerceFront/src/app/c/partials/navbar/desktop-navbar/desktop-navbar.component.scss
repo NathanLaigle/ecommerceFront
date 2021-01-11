@@ -15,3 +15,13 @@
 .first-element {
     padding-left: 0;
 }
+
+.cart {
+    z-index: 1;
+    margin-top: 8vh;
+    height: 90%;
+}
+
+.cart-over {
+    opacity: 0.05;
+}
