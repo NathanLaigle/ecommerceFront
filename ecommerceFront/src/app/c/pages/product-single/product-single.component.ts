@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NFrameService } from 'src/app/s/animation/n-frame.service';
 
 @Component({
   selector: 'app-product-single',
@@ -7,10 +6,7 @@ import { NFrameService } from 'src/app/s/animation/n-frame.service';
   styleUrls: ['./product-single.component.scss'],
 })
 export class ProductSingleComponent implements OnInit {
-  constructor(private _nframe: NFrameService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this._nframe.validButton();
-    this._nframe.send();
-  }
+  ngOnInit(): void {}
 }

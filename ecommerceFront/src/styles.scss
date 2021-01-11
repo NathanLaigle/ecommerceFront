@@ -16,6 +16,19 @@
 
 
 /*
+ * Global styles
+ */
+
+body {
+    background-color: whitesmoke;
+}
+
+button {
+    font-size: 1em;
+}
+
+
+/*
  * Global class
  */
 
@@ -40,6 +53,10 @@
     background: $charter-pink;
 }
 
+.bg-whitesmoke {
+    background-color: whitesmoke;
+}
+
 
 /*
  * overriding
@@ -47,8 +64,4 @@
 
 .--round {
     border-radius: 15px;
-}
-
-button {
-    font-size: 1em;
 }

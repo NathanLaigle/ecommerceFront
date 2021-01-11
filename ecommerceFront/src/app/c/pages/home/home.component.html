@@ -17,14 +17,12 @@
             Catégories :
         </h2>
         <div class="--p-1">
-            <div class="--light-shadow --round --p-1 --cursor">
+            <div class="--light-shadow bg-charter-pink --light --round --p-1 --cursor">
                 Tout
             </div>
         </div>
         <div class="--p-1" *ngFor="let category of categories">
-            <div class="--light-shadow --round --p-1 --cursor">
-                {{category.name}}
-            </div>
+            <app-category-list [category]="category"></app-category-list>
         </div>
     </div>
 </div>
@@ -34,6 +32,6 @@
     <div class="--light-line-bottom"></div>
     <h2 class="--py-1">Nos produits</h2>
     <div class="--container --col-2 --col-md-3 --col-lg-4 --col-xl-5 --gap-2 product-container">
-        <app-product-single *ngFor="let number of numbers"></app-product-single>
+        <app-product-thumbnail *ngFor="let number of numbers"></app-product-thumbnail>
     </div>
 </div>

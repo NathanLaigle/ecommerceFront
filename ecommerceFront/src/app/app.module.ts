@@ -13,6 +13,8 @@ import { ProductArchiveComponent } from './c/pages/product-archive/product-archi
 import { ProductSingleComponent } from './c/pages/product-single/product-single.component';
 import { MyAccountComponent } from './c/pages/my-account/my-account.component';
 import { CartComponent } from './c/partials/cart/cart.component';
+import { ProductThumbnailComponent } from './c/partials/product-thumbnail/product-thumbnail.component';
+import { CategoryListComponent } from './c/partials/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CartComponent } from './c/partials/cart/cart.component';
     ProductSingleComponent,
     MyAccountComponent,
     CartComponent,
+    ProductThumbnailComponent,
+    CategoryListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
