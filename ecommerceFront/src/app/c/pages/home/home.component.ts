@@ -1,14 +1,6 @@
-import {
-  AfterContentChecked,
-  Component,
-  DoCheck,
-  HostListener,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/i/category';
 import { Product } from 'src/app/i/product';
-import { NFrameService } from 'src/app/s/animation/n-frame.service';
 import { CategoryService } from 'src/app/s/category.service';
 import { ProductsService } from 'src/app/s/products.service';
 
