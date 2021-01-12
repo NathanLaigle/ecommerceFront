@@ -13,20 +13,14 @@ import { ProductsService } from 'src/app/s/products.service';
 export class HomeComponent implements OnInit, DoCheck {
   constructor(
     private _products: ProductsService,
-    private _category: CategoryService,
-    private _nframe: NFrameService
+    private _category: CategoryService
   ) {}
 
   categories: Category[] = this._category.category;
   products: Product[] = this._products.products;
 
-  //test
-  numbers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
   ngOnInit(): void {
-    this._nframe.doAll();
     this._products.loadProducts();
-    this.products = this._products.products;
   }
 
   ngDoCheck() {

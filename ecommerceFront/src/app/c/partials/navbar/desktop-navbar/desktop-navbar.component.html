@@ -3,14 +3,14 @@
         <div class="--d-flex --a-center --j-between --px-1">
             <nav>
                 <ul class="--d-flex">
-                    <li class="--d-flex --j-center --a-center --cursor --p-1 first-element">
+                    <li class="--d-flex --j-center --a-center --p-1 first-element">
                         <a [routerLink]="[ '/' ]" [routerLinkActive]="'active-route'" [routerLinkActiveOptions]="{ exact: true }">
-                            <h3>Accueil</h3>
+                            <h3 class="--cursor">Accueil</h3>
                         </a>
                     </li>
-                    <li *ngFor="let category of categories" class="--d-flex --j-center --a-center --p-1 --cursor">
+                    <li *ngFor="let category of categories" class="--d-flex --j-center --a-center --p-1">
                         <a [routerLink]="[ '/categorie/', category.id ]" [routerLinkActive]="'active-route'">
-                            <h3>{{category.name}}</h3>
+                            <h3 class="--cursor">{{category.name}}</h3>
                         </a>
                     </li>
                 </ul>
