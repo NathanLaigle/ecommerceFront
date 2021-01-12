@@ -20,4 +20,5 @@ export class ProductThumbnailComponent implements OnInit {
   }
 
   @Input() product: Product;
+  @Input() id: number;
 }
