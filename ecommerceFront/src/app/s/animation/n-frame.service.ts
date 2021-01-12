@@ -91,7 +91,6 @@ export class NFrameService {
         if (attribut.name == 'data-hover') {
           let classToAdd = attribut.value;
           $(e.target).addClass(classToAdd);
-          $(e.target).css('transition', 'ease 0.5s');
         }
       }
     });
