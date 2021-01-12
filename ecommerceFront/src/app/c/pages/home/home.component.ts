@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit, DoCheck {
   categories: Category[] = this._category.category;
   products: Product[] = this._products.products;
 
-  ngOnInit(): void {
-    this._products.loadProducts();
-  }
+  ngOnInit(): void {}
 
   ngDoCheck() {
     this.products = this._products.products;
