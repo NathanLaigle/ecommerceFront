@@ -2,9 +2,6 @@
 <div class="--d-none --d-block-md --vh-10"></div>
 <router-outlet></router-outlet>
 
-<!-- Loader -->
-<app-loader [hidden]="!loader"></app-loader>
-
 <!-- Navbars -->
 <app-desktop-navbar *ngIf="innerWidth > 768"></app-desktop-navbar>
 <app-mobile-navbar *ngIf="innerWidth < 768"></app-mobile-navbar>

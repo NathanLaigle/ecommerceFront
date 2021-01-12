@@ -1,19 +1,16 @@
-import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Product } from './i/product';
 import { NFrameService } from './s/animation/n-frame.service';
-import { ProductsService } from './s/products.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
   constructor(private _nframe: NFrameService) {}
 
   public products: Product[];
-
-  public loader: boolean = true;
 
   innerWidth: number;
 
@@ -25,9 +22,5 @@ export class AppComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
-  }
-
-  ngDoCheck(): void {
-    this.loader = false;
   }
 }
