@@ -7,7 +7,7 @@ import { ProductSingleComponent } from './c/pages/product-single/product-single.
 
 const routes: Routes = [
   { path: 'categorie/:id', component: ProductArchiveComponent },
-  { path: 'product/:id', component: ProductSingleComponent },
+  { path: 'produit/:id', component: ProductSingleComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', component: Page404Component, pathMatch: 'full' },
 ];
