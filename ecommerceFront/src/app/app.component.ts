@@ -1,7 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Product } from './i/product';
 import { NFrameService } from './s/animation/n-frame.service';
-import { ProductsService } from './s/products.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +7,7 @@ import { ProductsService } from './s/products.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private _nframe: NFrameService,
-    private _products: ProductsService
-  ) {}
+  constructor(private _nframe: NFrameService) {}
 
   innerWidth: number;
 
@@ -22,7 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._products.loadProducts();
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
   }

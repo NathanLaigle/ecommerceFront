@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/i/category';
@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/s/products.service';
   templateUrl: './product-archive.component.html',
   styleUrls: ['./product-archive.component.scss'],
 })
-export class ProductArchiveComponent implements OnInit, DoCheck {
+export class ProductArchiveComponent implements OnInit {
   constructor(
     private _products: ProductsService,
     private _route: ActivatedRoute,
@@ -24,6 +24,10 @@ export class ProductArchiveComponent implements OnInit, DoCheck {
   sub: Subscription;
 
   ngOnInit(): void {
+    let sub = this._products.http.subscribe((data: Product[]) => {
+      this.products = data;
+      sub.unsubscribe();
+    });
     // get current category id
     this.sub = this._route.params.subscribe((params) => {
       this.idCategory = +params['id'];
@@ -35,9 +39,5 @@ export class ProductArchiveComponent implements OnInit, DoCheck {
         }
       });
     });
-  }
-
-  ngDoCheck() {
-    this.products = this._products.products;
   }
 }

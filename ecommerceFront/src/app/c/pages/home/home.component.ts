@@ -17,7 +17,7 @@ import { ProductsService } from 'src/app/s/products.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, AfterContentChecked {
+export class HomeComponent implements OnInit {
   constructor(
     private _products: ProductsService,
     private _category: CategoryService
@@ -26,9 +26,10 @@ export class HomeComponent implements OnInit, AfterContentChecked {
   categories: Category[] = this._category.category;
   products: Product[] = this._products.products;
 
-  ngOnInit(): void {}
-
-  ngAfterContentChecked() {
-    this.products = this._products.products;
+  ngOnInit(): void {
+    let sub = this._products.http.subscribe((data: Product[]) => {
+      this.products = data;
+      sub.unsubscribe();
+    });
   }
 }
