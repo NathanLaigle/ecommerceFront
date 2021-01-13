@@ -3,9 +3,14 @@
  */
 
 .first-block {
-    margin-top: 2em;
-    @media (min-width: 768px) {
-        margin-top: 0;
+    @media (max-width: 768px) {
+        border-radius: 0;
+    }
+}
+
+.first-block-container {
+    @media (max-width: 768px) {
+        padding: 0;
     }
 }
 
@@ -21,6 +26,8 @@
     padding-right: 1em;
     @media (max-width: 768px) {
         width: max-content;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 

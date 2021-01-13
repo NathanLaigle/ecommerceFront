@@ -15,6 +15,7 @@ export class CategoryListComponent implements OnInit {
   ) {}
 
   @Input() category: Category;
+  @Input() activeClass: string;
 
   categories: Category[] = this._category.category;
 

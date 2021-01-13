@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 
@@ -21,6 +22,11 @@ export class UsersService {
   private url = this._apiSettings.url.user;
 
   public userCurrent: User;
+  public http: Observable<object> = this._http.post(
+    this.url,
+    { requestType: 'connexion', data: login },
+    this.option
+  );
 
   // Connexion
   userConnect(login: login): void {
