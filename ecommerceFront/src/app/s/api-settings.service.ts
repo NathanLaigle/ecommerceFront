@@ -14,7 +14,7 @@ export class ApiSettingsService {
   // ApiURL
   url = {
     product: 'https://127.0.0.1:8000/api/post',
-    user: 'URL_HERE',
+    user: 'https://127.0.0.1:8000/api/users',
     category: 'URL_HERE',
     order: 'URL_HERE',
   };

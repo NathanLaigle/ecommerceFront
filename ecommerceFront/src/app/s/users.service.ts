@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 
@@ -20,7 +21,13 @@ export class UsersService {
   private option = this._apiSettings.option;
   private url = this._apiSettings.url.user;
 
-  public userCurrent: User;
+  public users: User;
+  public http: Observable<object> = this._http.post(this.url, this.option);
+
+  postUser(data: login): Observable<object> {
+    let http = this._http.post(this.url, data, this.option);
+    return http;
+  }
 
   // Connexion
   userConnect(login: login): void {
@@ -31,6 +38,15 @@ export class UsersService {
         (error) => console.log(error)
       );
   }
+
+  // loadUsers() {
+  //   this._http
+  //     .get(this.url, this.option)
+  //     .subscribe(
+  //       (data: User) => setTimeout(() => (this.users = data)),
+  //       (error) => console.log(error)
+  //     );
+  // }
 
   // Account creation
   userCreate(user: User): void {
