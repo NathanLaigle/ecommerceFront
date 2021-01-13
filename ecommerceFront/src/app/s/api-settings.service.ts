@@ -11,6 +11,9 @@ export class ApiSettingsService {
     headers: { apiKey: 'API_KEY_HERE' },
   };
 
+  // uploads path
+  uplaods: string = 'https://127.0.0.1:8001/uploads/';
+
   // ApiURL
   url = {
     product: 'https://127.0.0.1:8000/api/post',

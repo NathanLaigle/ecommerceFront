@@ -1,16 +1,18 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Product } from './i/product';
 import { User } from './i/user';
 import { ProductsService } from './s/products.service';
 import { UsersService } from './s/users.service';
+import { NFrameService } from './s/animation/n-frame.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
   constructor(
+    private _nframe: NFrameService,
     private _products: ProductsService,
     private _users: UsersService
   ) {}
@@ -20,19 +22,18 @@ export class AppComponent implements OnInit, DoCheck {
 
   public loader: boolean = true;
 
-  ngOnInit(): void {
-    this._products.loadProducts();
-    this._users
-      .postUser({ mail: 'test', pswd: 'pswd' })
-      .subscribe(
-        (data: User) => (
-          (this.user = data), console.log('this user', this.user)
-        )
-      );
+  innerWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
 
-  ngDoCheck(): void {
-    this.products = this._products.products;
-    setTimeout(() => (this.loader = false), 1500);
+  ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this._nframe.doAll();
+    this._users
+      .postUser({ mail: 'test', pswd: 'pswd' })
+      .subscribe((data: User) => (this.user = data));
   }
 }

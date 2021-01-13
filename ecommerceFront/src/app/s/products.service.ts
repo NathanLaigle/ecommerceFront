@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../i/product';
 import { ApiSettingsService } from './api-settings.service';
 
@@ -14,13 +15,7 @@ export class ProductsService {
 
   private option = this._apiSettings.option;
   private url = this._apiSettings.url.product;
+  public http: Observable<object> = this._http.get(this.url, this.option);
 
   public products: Product[];
-
-  loadProducts() {
-    this._http.get(this.url, this.option).subscribe(
-      (data: Product[]) => setTimeout(() => (this.products = data)),
-      (error) => console.log(error)
-    );
-  }
 }

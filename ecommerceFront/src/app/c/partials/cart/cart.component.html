@@ -1,0 +1,13 @@
+<div class="--container --col-2 --py-1">
+    <h2>
+        Panier
+    </h2>
+    <p class="--txt-right">
+        Total : {{total | euroTransform}} €
+    </p>
+</div>
+<div class="--container --gap-1">
+    <div *ngFor="let item of cart">
+        <app-cart-item [item]="item" class="--container --col-4 --gap-1 --bg-light --round --light-shadow --p-1"></app-cart-item>
+    </div>
+</div>

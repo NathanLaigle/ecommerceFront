@@ -1,12 +1,10 @@
 <!-- Router -->
+<div class="--d-none --d-block-md --vh-md-10"></div>
 <router-outlet></router-outlet>
 
-<!-- Loader -->
-<app-loader [hidden]="!loader"></app-loader>
-
 <!-- Navbars -->
-<app-mobile-navbar></app-mobile-navbar>
-<app-desktop-navbar></app-desktop-navbar>
 <app-my-account></app-my-account>
 <!-- cart -->
 <!-- <app-cart></app-cart> -->
+<app-desktop-navbar *ngIf="innerWidth > 768"></app-desktop-navbar>
+<app-mobile-navbar *ngIf="innerWidth < 769"></app-mobile-navbar>
