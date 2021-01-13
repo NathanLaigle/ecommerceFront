@@ -16,6 +16,7 @@ import { CartComponent } from './c/partials/cart/cart.component';
 import { ProductThumbnailComponent } from './c/partials/product-thumbnail/product-thumbnail.component';
 import { CategoryListComponent } from './c/partials/category-list/category-list.component';
 import { EuroTransformPipe } from './p/euroTransformPipe';
+import { CartItemComponent } from './c/partials/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EuroTransformPipe } from './p/euroTransformPipe';
     ProductThumbnailComponent,
     CategoryListComponent,
     EuroTransformPipe,
+    CartItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

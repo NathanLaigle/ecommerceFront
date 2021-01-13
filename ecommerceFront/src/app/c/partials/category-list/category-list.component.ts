@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from 'src/app/i/category';
 import { NFrameService } from 'src/app/s/animation/n-frame.service';
 import { CategoryService } from 'src/app/s/category.service';
