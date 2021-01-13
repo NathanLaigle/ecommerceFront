@@ -25,3 +25,13 @@
 .cart-over {
     opacity: 0.05;
 }
+
+.cart-count {
+    font-size: 0.8em;
+    z-index: 11;
+    position: fixed;
+    top: 7vh;
+    right: 8vh;
+    width: 2.5vh;
+    height: 2.5vh;
+}

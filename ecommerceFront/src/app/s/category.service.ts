@@ -18,15 +18,15 @@ export class CategoryService {
   public category: Category[] = [
     {
       id: 0,
-      name: 'Homme',
+      name: 'Promo',
     },
     {
       id: 1,
-      name: 'Femme',
+      name: 'Jardin',
     },
     {
       id: 2,
-      name: 'Accessoire',
+      name: 'Maison',
     },
   ];
 

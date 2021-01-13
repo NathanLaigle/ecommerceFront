@@ -28,8 +28,15 @@
         <div class="--d-flex --j-center --py-2">
             <i class="fas fa-times --cursor" data-drop="cart"></i>
         </div>
-        <div class="--px-1">
+        <div class="--px-1 cart-item-container --h-75">
             <app-cart></app-cart>
         </div>
     </div>
+</div>
+
+<div *ngIf="onItemQuantityCount() != 0">
+    <div *ngIf="onItemQuantityCount() < 10; else bigNumber " class="cart-count --d-flex --j-center --a-center --full-round bg-charter-pink --light --light-shadow">{{onItemQuantityCount()}}</div>
+    <ng-template #bigNumber>
+        <div class="cart-count --d-flex --j-center --a-center --full-round bg-charter-pink --light --light-shadow">+</div>
+    </ng-template>
 </div>

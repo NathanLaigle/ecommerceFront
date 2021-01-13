@@ -37,3 +37,17 @@
         width: max-content;
     }
 }
+
+.cart-item-container {
+    overflow-y: scroll;
+}
+
+.cart-count {
+    font-size: 0.8em;
+    z-index: 11;
+    position: fixed;
+    bottom: 7vh;
+    right: 9.7vh;
+    width: 2.5vh;
+    height: 2.5vh;
+}
