@@ -15,13 +15,19 @@ export class HomeComponent implements OnInit {
     private _category: CategoryService
   ) {}
 
-  categories: Category[] = this._category.category;
-  products: Product[] = this._products.products;
+  categories: Category[];
+  products: Product[];
 
   ngOnInit(): void {
-    let sub = this._products.http.subscribe((data: Product[]) => {
+    let subProducts = this._products.http.subscribe((data: Product[]) => {
       this.products = data;
-      sub.unsubscribe();
+      subProducts.unsubscribe();
     });
+    let subCategories = this._category.categories.subscribe(
+      (data: Category[]) => {
+        this.categories = data;
+        subCategories.unsubscribe();
+      }
+    );
   }
 }

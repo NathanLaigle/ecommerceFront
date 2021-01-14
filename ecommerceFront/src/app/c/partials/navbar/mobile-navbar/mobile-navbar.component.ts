@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/i/cartItem';
+import { Category } from 'src/app/i/category';
 import { NFrameService } from 'src/app/s/animation/n-frame.service';
 import { CartService } from 'src/app/s/cart.service';
 import { CategoryService } from 'src/app/s/category.service';
@@ -22,6 +23,12 @@ export class MobileNavbarComponent implements OnInit {
     this._cart.cartObservable.subscribe((data: CartItem[]) => {
       this.cart = data;
     });
+    let subCategories = this._categories.categories.subscribe(
+      (data: Category[]) => {
+        this.categories = data;
+        subCategories.unsubscribe();
+      }
+    );
   }
 
   navIncrement: boolean = true;
@@ -43,5 +50,5 @@ export class MobileNavbarComponent implements OnInit {
 
   public cart: CartItem[];
   public menuOpen: boolean = false;
-  public categories = this._categories.category;
+  public categories: Category[];
 }
