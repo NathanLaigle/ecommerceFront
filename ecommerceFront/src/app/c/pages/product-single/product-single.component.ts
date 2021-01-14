@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/i/product';
+import { ApiSettingsService } from 'src/app/s/api-settings.service';
 import { ProductsService } from 'src/app/s/products.service';
 
 @Component({
@@ -11,9 +12,11 @@ import { ProductsService } from 'src/app/s/products.service';
 export class ProductSingleComponent implements OnInit {
   constructor(
     private _products: ProductsService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _api: ApiSettingsService
   ) {}
 
+  public uplaods: string = this._api.uplaods;
   public products: Product[];
   // This fake data is here to ovoid errors in console.
   // Without it, product is not defined until async operations are done
