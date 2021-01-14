@@ -22,9 +22,9 @@ export class ProductArchiveComponent implements OnInit {
   products: Product[];
   idCategory: number;
 
-  // This fake data is here to ovoid errors in consol.
+  // This fake data is here to ovoid errors in console.
   // Without it, category is not defined until async operations are done
-  // And is used in template.
+  // but is used in template.
   category: Category = { id: -1, name: 'search name' };
   sub: Subscription;
 
