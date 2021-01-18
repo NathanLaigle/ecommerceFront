@@ -31,7 +31,7 @@ export class ProductSingleComponent implements OnInit {
     description: '',
     id: 0,
     name: '',
-    picture: '',
+    picture: 'e65cf6b20d2d2f19f90db2a97079eb11a8dd9e51.jpeg',
     price: 0,
   };
   public productId: number;
