@@ -3,19 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  stripe_key:
-    'pk_test_51IAui8HqXpIcKjPZctscuNEoZdWjV4h3jqm88LTCobsPe0FkwetmZGpW2YT9VLWTJ7nHiX7jEZAnWvWQUvG7iMEA0081QRarwN',
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  firebaseConfig: {
-    apiKey: 'AIzaSyDvs7U1UiEPhaLOknkFhQCdOmcx5NrIHOw',
-    authDomain: 'webfleur3.firebaseapp.com',
-    projectId: 'webfleur3',
-    storageBucket: 'webfleur3.appspot.com',
-    messagingSenderId: '210483300114',
-    appId: '1:210483300114:web:fcf28960b11ae9031795cb',
-    measurementId: 'G-P0F9XBDM8H',
-  },
+  production: false
 };
 
 /*
