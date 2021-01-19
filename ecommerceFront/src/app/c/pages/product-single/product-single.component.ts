@@ -22,11 +22,37 @@ export class ProductSingleComponent implements OnInit {
   // Without it, product is not defined until async operations are done
   // But is used in template.
   public product: Product = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     category: { id: 0, name: '' },
     description: '',
     id: 0,
     name: '',
     picture: 'e65cf6b20d2d2f19f90db2a97079eb11a8dd9e51.jpeg',
+=======
+=======
+>>>>>>> parent of 704c58c... Componant : single product
+=======
+>>>>>>> parent of 704c58c... Componant : single product
+=======
+>>>>>>> parent of 704c58c... Componant : single product
+    category: { id: -1, name: 'no' },
+    description: 'no',
+    id: -1,
+    name: 'no',
+    picture: 'no',
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 704c58c... Componant : single product
+=======
+>>>>>>> parent of 704c58c... Componant : single product
+=======
+>>>>>>> parent of 704c58c... Componant : single product
+=======
+>>>>>>> parent of 704c58c... Componant : single product
     price: 0,
   };
   public productId: number;
