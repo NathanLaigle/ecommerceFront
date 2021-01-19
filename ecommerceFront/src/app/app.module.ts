@@ -39,13 +39,7 @@ import { StripeCheckoutModule } from 'ng-stripe-checkout';
     CartItemComponent,
     ValidationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    StripeCheckoutModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     {
       provide: LOCALE_ID,
