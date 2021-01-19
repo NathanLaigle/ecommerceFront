@@ -13,6 +13,9 @@ export interface login {
   providedIn: 'root',
 })
 export class UsersService {
+  pipe(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     private _http: HttpClient,
     private _apiSettings: ApiSettingsService

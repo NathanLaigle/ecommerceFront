@@ -8,9 +8,11 @@ import { UsersService } from 'src/app/s/users.service';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  constructor(private _users: UsersService) {}
+  constructor(private _user: UsersService) {
+    console.log(this._user);
+  }
 
-  public users: User = this._users.users;
+  public users: User = this._user.users;
 
   ngOnInit(): void {}
 }

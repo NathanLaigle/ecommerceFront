@@ -36,12 +36,14 @@ import { CartItemComponent } from './c/partials/cart-item/cart-item.component';
     CartItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'fr-FR',
     },
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

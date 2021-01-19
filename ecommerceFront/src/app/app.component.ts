@@ -34,6 +34,6 @@ export class AppComponent implements OnInit {
     this._nframe.doAll();
     this._users
       .postUser({ mail: 'test', pswd: 'pswd' })
-      .subscribe((data: User) => (this.user = data));
+      .subscribe((data: User) => (data = this.user));
   }
 }
