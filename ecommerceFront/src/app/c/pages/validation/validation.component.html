@@ -1,0 +1,10 @@
+<!-- stripe-payment.component.html -->
+<form (ngSubmit)="createStripeToken()" class="--container --p-3 --gap-1">
+    <label for="card-info">Card Info</label>
+    <div id="form-field" class="--container --gap-3">
+        <div id="card-info" #cardInfo></div>
+        <button id="submit-button" type="submit" class="--bg-mars --w-fit --p-1 --round --cursor">
+            Pay ${{_totalAmount}}
+        </button>
+    </div>
+</form>
