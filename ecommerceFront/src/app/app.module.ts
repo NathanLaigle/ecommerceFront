@@ -17,9 +17,6 @@ import { ProductThumbnailComponent } from './c/partials/product-thumbnail/produc
 import { CategoryListComponent } from './c/partials/category-list/category-list.component';
 import { EuroTransformPipe } from './p/euroTransformPipe';
 import { CartItemComponent } from './c/partials/cart-item/cart-item.component';
-import { FormsModule } from '@angular/forms';
-import { ValidationComponent } from './c/pages/validation/validation.component';
-import { StripeCheckoutModule } from 'ng-stripe-checkout';
 
 @NgModule({
   declarations: [
@@ -37,9 +34,8 @@ import { StripeCheckoutModule } from 'ng-stripe-checkout';
     CategoryListComponent,
     EuroTransformPipe,
     CartItemComponent,
-    ValidationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {
       provide: LOCALE_ID,

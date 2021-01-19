@@ -25,7 +25,7 @@ export class ProductArchiveComponent implements OnInit {
   // This fake data is here to ovoid errors in console.
   // Without it, category is not defined until async operations are done
   // but is used in template.
-  category: Category = { id: -1, name: 'search name' };
+  category: Category = { id: 0, name: '' };
   sub: Subscription;
 
   ngOnInit(): void {

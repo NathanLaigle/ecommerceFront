@@ -24,8 +24,8 @@ export class NFrameService {
           let dataOfElementsToDrop = attribut.value;
           let elementDropped = $('[data-dropped=' + dataOfElementsToDrop + ']');
           elementDropped.css('display') == 'none'
-            ? elementDropped.fadeIn(1)
-            : elementDropped.fadeOut(1);
+            ? elementDropped.fadeIn(300)
+            : elementDropped.fadeOut(300);
         }
       }
     });
