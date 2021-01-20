@@ -10,9 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   item$: Observable<any[]>;
-  constructor(private _nframe: NFrameService, firestore: AngularFirestore) {
-    this.item$ = firestore.collection('item').valueChanges();
-  }
+  constructor(private _nframe: NFrameService, firestore: AngularFirestore) {}
 
   innerWidth: number;
 
