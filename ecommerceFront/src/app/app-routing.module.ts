@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'produit/:id', component: ProductSingleComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', component: Page404Component, pathMatch: 'full' },
-  { path: 'users/:id', component: MyAccountComponent },
+  { path: 'users', component: MyAccountComponent },
 ];
 
 @NgModule({

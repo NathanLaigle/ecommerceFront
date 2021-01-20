@@ -33,7 +33,7 @@ export class MyAccountComponent implements OnInit {
       // console.log(data.id);
 
       const users = this._user.users;
-      let user = this._user.postUser(users).subscribe((data: User) => {
+      this._user.postUser(users).subscribe((data: User) => {
         this.users = data;
       });
       // this.user = this._route.queryParams.subscribe((params) => {
