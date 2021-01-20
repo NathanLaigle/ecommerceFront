@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NFrameService } from './s/animation/n-frame.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,8 @@ import { NFrameService } from './s/animation/n-frame.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private _nframe: NFrameService) {}
+  item$: Observable<any[]>;
+  constructor(private _nframe: NFrameService, firestore: AngularFirestore) {}
 
   innerWidth: number;
 
@@ -19,5 +22,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
+    this.item$.subscribe((data) => {
+      console.log(data);
+    });
   }
 }
