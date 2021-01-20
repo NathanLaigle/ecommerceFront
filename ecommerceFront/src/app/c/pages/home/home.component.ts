@@ -15,16 +15,6 @@ export class HomeComponent implements OnInit {
     private _category: CategoryService
   ) {}
 
-<<<<<<< HEAD
-  categories: Category[] = this._category.category;
-  products: Product[] = this._products.products;
-
-  ngOnInit(): void {
-    let sub = this._products.http.subscribe((data: Product[]) => {
-      this.products = data;
-      sub.unsubscribe();
-    });
-=======
   categories: Category[];
   products: Product[];
 
@@ -39,6 +29,5 @@ export class HomeComponent implements OnInit {
         subCategories.unsubscribe();
       }
     );
->>>>>>> Nathan
   }
 }

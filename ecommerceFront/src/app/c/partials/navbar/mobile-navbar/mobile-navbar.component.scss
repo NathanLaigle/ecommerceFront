@@ -2,69 +2,66 @@
  * Imports
  */
 
-@import '../../../../../assets/css/vars.scss';
+@import "../../../../../assets/css/vars.scss";
 
 /*
   * Mobile nav
   */
 
 i {
-    z-index: 10;
+  z-index: 10;
 }
 
 .mobile-nav {
-    z-index: 10;
-    * {
-        padding: 0.3em;
-    }
+  z-index: 10;
+  * {
+    padding: 0.3em;
+  }
 }
 
 .cart-interface,
 .nav-interface {
-    z-index: 9;
+  z-index: 9;
 }
 
 .category-container {
-    @media (max-width: 768px) {
-        width: 100%;
-        overflow: scroll;
-        &::-webkit-scrollbar {
-            display: none;
-        }
+  @media (max-width: 768px) {
+    width: 100%;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
 }
 
 .category-display {
-    padding-left: 2em;
-    padding-right: 1em;
-    @media (max-width: 768px) {
-        width: max-content;
-    }
-<<<<<<< HEAD
-=======
+  padding-left: 2em;
+  padding-right: 1em;
+  @media (max-width: 768px) {
+    width: max-content;
+  }
 }
 
 .cart-item-container {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .menu {
-    position: relative;
+  position: relative;
 }
 
 .cart-count-block {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .cart-count {
-    font-size: 0.8em;
-    z-index: 11;
-    position: absolute;
-    top: -40%;
-    right: 4.38em;
-    width: 2.5vh;
-    height: 2.5vh;
->>>>>>> Nathan
+  font-size: 0.8em;
+  z-index: 11;
+  position: absolute;
+  top: -40%;
+  right: 4.38em;
+  width: 2.5vh;
+  height: 2.5vh;
 }

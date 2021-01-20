@@ -17,11 +17,7 @@ export class CategoryListComponent implements OnInit {
   @Input() category: Category;
   @Input() activeClass: string;
 
-<<<<<<< HEAD
-  categories: Category[] = this._category.category;
-=======
   categories: Category[];
->>>>>>> Nathan
 
   ngOnInit(): void {
     this._nframe.hover();

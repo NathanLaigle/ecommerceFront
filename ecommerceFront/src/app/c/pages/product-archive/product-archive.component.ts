@@ -18,29 +18,6 @@ export class ProductArchiveComponent implements OnInit {
     private _category: CategoryService
   ) {}
 
-<<<<<<< HEAD
-  products: Product[];
-  idCategory: number;
-  category: Category;
-  sub: Subscription;
-
-  ngOnInit(): void {
-    let sub = this._products.http.subscribe((data: Product[]) => {
-      this.products = data;
-      sub.unsubscribe();
-    });
-    // get current category id
-    this.sub = this._route.params.subscribe((params) => {
-      this.idCategory = +params['id'];
-
-      // search category with id
-      this._category.category.forEach((category) => {
-        if (category.id == this.idCategory) {
-          this.category = category;
-        }
-      });
-    });
-=======
   categories: Category[];
   products: Product[];
   idCategory: number;
@@ -76,6 +53,5 @@ export class ProductArchiveComponent implements OnInit {
         subCategories.unsubscribe();
       }
     );
->>>>>>> Nathan
   }
 }

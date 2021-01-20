@@ -12,11 +12,6 @@ import { ProductsService } from 'src/app/s/products.service';
   styleUrls: ['./product-single.component.scss'],
 })
 export class ProductSingleComponent implements OnInit {
-<<<<<<< HEAD
-  constructor() {}
-
-  ngOnInit(): void {}
-=======
   constructor(
     private _products: ProductsService,
     private _route: ActivatedRoute,
@@ -61,5 +56,4 @@ export class ProductSingleComponent implements OnInit {
       });
     });
   }
->>>>>>> Nathan
 }

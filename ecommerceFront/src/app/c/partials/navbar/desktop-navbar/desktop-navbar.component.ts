@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/i/cartItem';
 import { Category } from 'src/app/i/category';
 import { NFrameService } from 'src/app/s/animation/n-frame.service';
-<<<<<<< HEAD
-=======
 import { CartService } from 'src/app/s/cart.service';
->>>>>>> Nathan
 import { CategoryService } from 'src/app/s/category.service';
 
 @Component({
@@ -16,12 +13,8 @@ import { CategoryService } from 'src/app/s/category.service';
 export class DesktopNavbarComponent implements OnInit {
   constructor(
     private _categories: CategoryService,
-<<<<<<< HEAD
-    private _nframe: NFrameService
-=======
     private _nframe: NFrameService,
     private _cart: CartService
->>>>>>> Nathan
   ) {}
 
   public cart: CartItem[];
@@ -29,8 +22,6 @@ export class DesktopNavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this._nframe.drop();
-<<<<<<< HEAD
-=======
     this._cart.cartObservable.subscribe((data: CartItem[]) => {
       this.cart = data;
     });
@@ -48,6 +39,5 @@ export class DesktopNavbarComponent implements OnInit {
       count += item.quantity;
     });
     return count;
->>>>>>> Nathan
   }
 }
