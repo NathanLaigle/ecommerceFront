@@ -12,13 +12,13 @@ export class ApiSettingsService {
   };
 
   // uploads path
-  uplaods: string = 'https://127.0.0.1:8001/uploads/';
+  uplaods: string = 'https://127.0.0.1:8000/uploads/';
 
   // ApiURL
   url = {
     product: 'https://127.0.0.1:8000/api/post',
     user: 'https://127.0.0.1:8000/api/users',
-    category: 'URL_HERE',
+    category: 'https://127.0.0.1:8000/api/category',
     order: 'URL_HERE',
   };
 }
