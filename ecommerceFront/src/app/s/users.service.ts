@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
+import { ActivatedRoute } from '@angular/router';
 
 export interface login {
   mail: string;
@@ -17,6 +18,7 @@ export class UsersService {
     throw new Error('Method not implemented.');
   }
   constructor(
+    private _route: ActivatedRoute,
     private _http: HttpClient,
     private _apiSettings: ApiSettingsService
   ) {}
@@ -27,7 +29,12 @@ export class UsersService {
   public users: User;
   public http: Observable<object> = this._http.post(this.url, this.option);
 
-  postUser(data: login): Observable<object> {
+  public id: string;
+
+  postUser(data: User): Observable<object> {
+    this._route.params.subscribe((params) => {
+      console.log('p', params);
+    });
     let http = this._http.post(this.url, data, this.option);
     return http;
   }

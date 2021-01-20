@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
 import { Product } from './i/product';
 import { User } from './i/user';
 import { ProductsService } from './s/products.service';
@@ -12,6 +13,7 @@ import { NFrameService } from './s/animation/n-frame.service';
 })
 export class AppComponent implements OnInit {
   constructor(
+    // private route: ActivatedRoute,
     private _nframe: NFrameService,
     private _products: ProductsService,
     private _users: UsersService
@@ -19,6 +21,7 @@ export class AppComponent implements OnInit {
 
   public products: Product[];
   public user: User;
+  // public id: string;
 
   public loader: boolean = true;
 
@@ -32,8 +35,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
-    this._users
-      .postUser({ mail: 'test', pswd: 'pswd' })
-      .subscribe((data: User) => (data = this.user));
   }
 }
