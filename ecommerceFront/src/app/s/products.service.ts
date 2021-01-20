@@ -16,6 +16,4 @@ export class ProductsService {
   private option = this._apiSettings.option;
   private url = this._apiSettings.url.product;
   public http: Observable<object> = this._http.get(this.url, this.option);
-
-  public products: Product[];
 }

@@ -6,8 +6,13 @@
     <a [routerLink]="[ '/produit/', product.id ]">
         <div class="--vh-md-30 --vh-25 --bg-light-grey --light-shadow --round --cursor" data-hover="--shadow" style="background: url('{{uploads}}{{product.picture}}') center center / cover;"></div>
     </a>
+<<<<<<< HEAD
     <div class="--container">
         <button class="--cursor" data-send="cart" (click)="cartService.onAddToCart(product)">Ajouer au panier
+=======
+    <div class="--container --g-j-center">
+        <button class="--cursor --line-bottom --w-fit" data-send="cart" (click)="cartService.onAddToCart(product)">Ajouter au panier
+>>>>>>> Nathan
             <div data-valid class="bg-whitesmoke --round charter-pink">Ajouté</div>
         </button>
     </div>

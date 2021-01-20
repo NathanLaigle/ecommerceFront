@@ -18,6 +18,7 @@ export class ProductArchiveComponent implements OnInit {
     private _category: CategoryService
   ) {}
 
+<<<<<<< HEAD
   products: Product[];
   idCategory: number;
   category: Category;
@@ -39,5 +40,42 @@ export class ProductArchiveComponent implements OnInit {
         }
       });
     });
+=======
+  categories: Category[];
+  products: Product[];
+  idCategory: number;
+
+  // This fake data is here to ovoid errors in console.
+  // Without it, category is not defined until async operations are done
+  // but is used in template.
+  category: Category = { id: 0, name: '' };
+  sub: Subscription;
+
+  ngOnInit(): void {
+    // products subscription
+    let subProducts = this._products.http.subscribe((data: Product[]) => {
+      this.products = data;
+      subProducts.unsubscribe();
+    });
+
+    // categories subscription
+    let subCategories = this._category.categories.subscribe(
+      (data: Category[]) => {
+        this.categories = data;
+        // get current category id
+        this.sub = this._route.params.subscribe((params) => {
+          this.idCategory = +params['id'];
+
+          // search category with id
+          this.categories.forEach((category: Category) => {
+            if (category.id == this.idCategory) {
+              this.category = category;
+            }
+          });
+        });
+        subCategories.unsubscribe();
+      }
+    );
+>>>>>>> Nathan
   }
 }
