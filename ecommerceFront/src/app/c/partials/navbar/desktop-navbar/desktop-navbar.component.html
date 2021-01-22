@@ -15,9 +15,16 @@
                     </li>
                 </ul>
             </nav>
-            <div class="--container --col-2 --g-a-center --gap-2 --px-2 --light-shadow --full-round">
+            <div class="right-menu --container --col-2 --g-a-center --gap-2 --px-2 --light-shadow --full-round">
                 <i class="fas fa-user --cursor"></i>
                 <i class="fas fa-shopping-cart --cursor" id="cart" data-drop="cart"></i>
+                <!-- Items counter -->
+                <div *ngIf="onItemQuantityCount() != 0" class="cart-count-block">
+                    <div *ngIf="onItemQuantityCount() < 10; else bigNumber " class="cart-count --d-flex --j-center --a-center --full-round bg-charter-pink --light --light-shadow">{{onItemQuantityCount()}}</div>
+                    <ng-template #bigNumber>
+                        <div class="cart-count --d-flex --j-center --a-center --full-round bg-charter-pink --light --light-shadow">+</div>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </div>

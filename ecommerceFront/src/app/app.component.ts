@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NFrameService } from './s/animation/n-frame.service';
 
@@ -7,7 +8,7 @@ import { NFrameService } from './s/animation/n-frame.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private _nframe: NFrameService) {}
+  constructor(private _nframe: NFrameService, private _http: HttpClient) {}
 
   innerWidth: number;
 
@@ -16,7 +17,20 @@ export class AppComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  data: any = {
+    testid: 54,
+    testText: 'Bonjour',
+  };
+
   ngOnInit(): void {
+    // this._http
+    //   .put(
+    //     'https://webfleur3-default-rtdb.europe-west1.firebasedatabase.app/user54.json',
+    //     this.data
+    //   )
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
   }
