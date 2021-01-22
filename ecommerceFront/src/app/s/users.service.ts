@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '../i/user';
+import { Observable, Subject } from 'rxjs';
+import { LoginInfo, CurrentUser, User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 export interface login {
   mail: string;
@@ -23,47 +25,36 @@ export class UsersService {
     private _apiSettings: ApiSettingsService
   ) {}
 
-  private option = this._apiSettings.option;
-  private url = this._apiSettings.url.user;
+  private _option = this._apiSettings.option;
+  private _url = this._apiSettings.url.user;
+  public http: Observable<object> = this._http.post(this._url, this._option);
 
-  public users: User;
-  public http: Observable<object> = this._http.post(this.url, this.option);
+  user = {};
+  userSubject: Subject<object> = new BehaviorSubject(this.user);
+  userObservable: Observable<object> = this.userSubject.asObservable();
 
-  public id: string;
-
-  postUser(data: User): Observable<object> {
+  postUser(data): Observable<object> {
     this._route.params.subscribe((params) => {
       console.log('p', params);
     });
-    let http = this._http.post(this.url, data, this.option);
+    let http = this._http.post(this._url, data, this._option);
     return http;
   }
 
-  // Connexion
-  userConnect(login: login): void {
-    this._http
-      .post(this.url, { requestType: 'connexion', data: login }, this.option)
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      );
+  register(form: FormGroup) {
+    let http = this._http
+      .post(this._url.concat('/register'), form.value, this._option)
+      .subscribe((data: CurrentUser) => {
+        this.userSubject.next(data);
+      });
   }
 
-  // loadUsers() {
-  //   this._http
-  //     .get(this.url, this.option)
-  //     .subscribe(
-  //       (data: User) => setTimeout(() => (this.users = data)),
-  //       (error) => console.log(error)
-  //     );
-  // }
-
-  // Account creation
-  userCreate(user: User): void {
+  // Connexion
+  login(form: FormGroup): void {
     this._http
-      .post(this.url, { requestType: 'creation', data: user }, this.option)
+      .post(this._url.concat('/login'), form.value, this._option)
       .subscribe(
-        (data) => console.log(data),
+        (data: LoginInfo) => console.log(data),
         (error) => console.log(error)
       );
   }

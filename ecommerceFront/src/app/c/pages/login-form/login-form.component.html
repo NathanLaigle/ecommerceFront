@@ -1,0 +1,46 @@
+<div class="width">
+  <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile [colspan]="1">
+      <h1 style="text-align: center">Se connecter à son compte</h1>
+    </mat-grid-tile>
+
+    <form
+      [formGroup]="_authForm"
+      class="login-container"
+      (ngSubmit)="login.login(_authForm)"
+    >
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Entrez votre email"
+            formControlName="email"
+          /> </mat-form-field
+      ></mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Entrez votre mot de passe"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <a class="example-margin">Mot de passe oublié</a>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <button type="submit" mat-raised-button color="primary">
+          Se connecter
+        </button>
+      </mat-grid-tile>
+    </form>
+  </mat-grid-list>
+</div>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/i/user';
+import { AuthService } from 'src/app/s/auth.service';
 import { UsersService } from 'src/app/s/users.service';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CurrentUser, User } from '../../../i/user';
 
 @Component({
   selector: 'app-my-account',
@@ -11,35 +10,32 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  constructor(private _user: UsersService, private _route: ActivatedRoute) {}
+  constructor(
+    private _user: UsersService,
+    private _route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router,
+    public register: UsersService
+  ) {}
 
-  public users: User = this._user.users;
+  public users: User;
+  public user: CurrentUser;
   public id: Number;
   userId: Number;
 
   ngOnInit(): void {
-    // this.route.queryParams.subscribe((params) => {
-    //   this.id = params['id'];
-    //   console.log(this);
-    // });
-
-    // const id = this._route.snapshot.paramMap.get('id');
-    // this._user.id = id;
-    console.log(this._route);
-
-    this._route.params.subscribe((params) => {
-      console.log(params);
-      // this.userId = data.id;
-      // console.log(data.id);
-
-      const users = this._user.users;
-      this._user.postUser(users).subscribe((data: User) => {
-        this.users = data;
-      });
-      // this.user = this._route.queryParams.subscribe((params) => {
-      //   this.idUser = params['id'];
-      //   console.log('params', params, this.idUser); // Print the parameter to the console.
-      // });
+    this.register.userObservable.subscribe((user: CurrentUser) => {
+      console.log(user);
+      this.user = user;
+    });
+    const users = this._user.user;
+    this._user.postUser(users).subscribe((data: User) => {
+      this.users = data;
     });
   }
+
+  // logout() {
+  //   this.authService.logOut();
+  //   this.router.navigateByUrl('/login');
+  // }
 }
