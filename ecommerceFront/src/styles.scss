@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+ * Imports
+ */
+
+@import './assets/css/n-frame.min.css',
+'./assets/css/vars.scss',
+'https://fonts.googleapis.com/css2?family=Karla&display=swap',
+'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
+
+/*
+ * Typo
+ */
+
+* {
+    font-family: 'Karla', sans-serif;
+}
+
+
+/*
+ * Global styles
+ */
+
+body {
+    background-color: whitesmoke;
+}
+
+button {
+    font-size: 1em;
+}
+
+*::selection {
+    background-color: $charter-pink;
+    color: #fff;
+}
+
+
+/*
+ * Global class
+ */
+
+a.active-route {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        right: calc(50% - 4px);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $charter-pink;
+    }
+}
+
+a.active-route-mobile {
+    * {
+        background: $charter-pink;
+    }
+    color: #fff;
+}
+
+.charter-blue {
+    color: $charter-blue;
+}
+
+.charter-pink {
+    color: $charter-pink;
+}
+
+.bg-charter-blue {
+    background: $charter-blue;
+}
+
+.bg-charter-pink {
+    background: $charter-pink;
+}
+
+.bg-whitesmoke {
+    background-color: whitesmoke;
+}
+
+
+/*
+ * overriding
+ */
+
+.--round {
+    border-radius: 15px;
+}

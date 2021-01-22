@@ -1,0 +1,37 @@
+/*
+ * Imports
+ */
+
+@import '../../../../../assets/css/vars.scss';
+
+/*
+ * Desktop nav
+ */
+
+.desktop-nav {
+    z-index: 10;
+}
+
+.first-element {
+    padding-left: 0;
+}
+
+.cart {
+    z-index: 1;
+    margin-top: 8vh;
+    height: 90%;
+}
+
+.cart-over {
+    opacity: 0.05;
+}
+
+.cart-count {
+    font-size: 0.8em;
+    z-index: 11;
+    position: fixed;
+    top: 7vh;
+    right: 8vh;
+    width: 2.5vh;
+    height: 2.5vh;
+}
