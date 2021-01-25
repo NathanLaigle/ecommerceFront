@@ -10,14 +10,24 @@ import { CurrentUser, User } from '../../../i/user';
 })
 export class MyAccountComponent implements OnInit {
   constructor(private _user: UsersService, private _router: Router) {}
-  public _CurUser: CurrentUser;
+  public curUser: CurrentUser = {
+    id: 0,
+    lastname: '',
+    firstname: '',
+    address: '',
+    cp: '',
+    town: '',
+    token: '',
+    expires_in: '',
+    email: '',
+  };
 
   ngOnInit(): void {
     const ls = { email: localStorage.getItem('EMAIL') };
     this._user.account(ls).subscribe(
       (data: CurrentUser) => {
         if (data) {
-          this._CurUser = data;
+          this.curUser = data;
           data.token = JSON.parse(localStorage.getItem('ACCESS_TOKEN'));
           data.expires_in = localStorage.getItem('EXPIRES_IN');
           console.log(data);
