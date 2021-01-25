@@ -1,50 +1,70 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '../i/user';
+import { Observable, Subject } from 'rxjs';
+import { CurrentUser, User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 export interface login {
   mail: string;
   pswd: string;
 }
 
+export interface Email {
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+  pipe(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
+    private _route: ActivatedRoute,
     private _http: HttpClient,
     private _apiSettings: ApiSettingsService
   ) {}
 
-  private option = this._apiSettings.option;
-  private url = this._apiSettings.url.user;
+  private _option = this._apiSettings.option;
+  private _url = this._apiSettings.url.user;
+  public http: Observable<object> = this._http.post(this._url, this._option);
 
-  public userCurrent: User;
-  public http: Observable<object> = this._http.post(
-    this.url,
-    { requestType: 'connexion', data: login },
-    this.option
-  );
+  user = {};
+  userSubject: Subject<object> = new BehaviorSubject(this.user);
+  userObservable: Observable<object> = this.userSubject.asObservable();
+  // ls = { email: localStorage.getItem('EMAIL') };
 
-  // Connexion
-  userConnect(login: login): void {
-    this._http
-      .post(this.url, { requestType: 'connexion', data: login }, this.option)
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      );
+  postUser(data): Observable<object> {
+    let http = this._http.post(this._url, data, this._option);
+    return http;
   }
 
-  // Account creation
-  userCreate(user: User): void {
+  // Création de compte
+  register(form: FormGroup) {
+    let http = this._http
+      .post(this._url.concat('/register'), form.value, this._option)
+      .subscribe((data: CurrentUser) => {
+        this.userSubject.next(data);
+      });
+  }
+
+  // Connexion
+  login(form: FormGroup): void {
     this._http
-      .post(this.url, { requestType: 'creation', data: user }, this.option)
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
-      );
+      .post(this._url.concat('/login'), form.value, this._option)
+      .subscribe((data: CurrentUser) => {
+        this.userSubject.next(data);
+      });
+  }
+
+  // get user info with email from JWT token
+  account(ls: Email): Observable<object> {
+    let http = this._http.post(this._url.concat('/account'), ls, this._option);
+
+    return http;
   }
 }

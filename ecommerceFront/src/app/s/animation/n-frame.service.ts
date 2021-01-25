@@ -116,7 +116,7 @@ export class NFrameService {
     $('[data-send]').on('click', (e) => {
       let sendTargetId = $(e.target).attr('data-send');
 
-      // get  start X, Y postion and start width and height
+      // get  start X, Y position and start width and height
       let xPos = $(e.target).offset().left;
       let yPos = $(e.target).offset().top;
       let startWidth = $(e.target).width();
@@ -145,7 +145,7 @@ export class NFrameService {
         parseFloat(targetYPos) + totalHeight / 2 - scrollTop - 5;
 
       // create element
-      let element = document.createElement('div');
+      const element = document.createElement('div');
       $(element).css({
         width: '10px',
         height: '10px',
