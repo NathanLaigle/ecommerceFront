@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/s/auth.service';
-import { UsersService } from 'src/app/s/users.service';
+import { Email, UsersService } from 'src/app/s/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 
@@ -10,32 +9,28 @@ import { CurrentUser, User } from '../../../i/user';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  constructor(
-    private _user: UsersService,
-    private _route: ActivatedRoute,
-    private authService: AuthService,
-    private router: Router,
-    public register: UsersService
-  ) {}
-
-  public users: User;
-  public user: CurrentUser;
-  public id: Number;
-  userId: Number;
+  constructor(private _user: UsersService, private _router: Router) {}
+  public _CurUser: CurrentUser;
 
   ngOnInit(): void {
-    this.register.userObservable.subscribe((user: CurrentUser) => {
-      console.log(user);
-      this.user = user;
-    });
-    const users = this._user.user;
-    this._user.postUser(users).subscribe((data: User) => {
-      this.users = data;
-    });
+    const ls = { email: localStorage.getItem('EMAIL') };
+    this._user.account(ls).subscribe(
+      (data: CurrentUser) => {
+        if (data) {
+          this._CurUser = data;
+          data.token = JSON.parse(localStorage.getItem('ACCESS_TOKEN'));
+          data.expires_in = localStorage.getItem('EXPIRES_IN');
+          console.log(data);
+        }
+      },
+      (error) => console.log(error)
+    );
   }
-
-  // logout() {
-  //   this.authService.logOut();
-  //   this.router.navigateByUrl('/login');
-  // }
+  logout() {
+    localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('EXPIRES_IN');
+    localStorage.removeItem('EMAIL');
+    console.log('MA', localStorage);
+    this._router.navigateByUrl('/user/login');
+  }
 }

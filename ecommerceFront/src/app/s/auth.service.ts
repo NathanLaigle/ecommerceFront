@@ -14,10 +14,6 @@ export class AuthService {
   AUTH_SERVER = 'https://127.0.0.1:8000/api/users';
   authSubject = new BehaviorSubject(false);
 
-  // public signIn(user: User) {
-  //   localStorage.setItem('ACCESS_TOKEN', 'access_token');
-  // }
-
   register(user: User): Observable<JwtResponse> {
     return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}`, user).pipe(
       tap((res: JwtResponse) => {
@@ -41,6 +37,7 @@ export class AuthService {
       })
     );
   }
+
   logOut() {
     localStorage.removeItem('ACCESS_TOKEN');
     localStorage.removeItem('EXPIRES_IN');
@@ -54,7 +51,4 @@ export class AuthService {
   isAuthenticated() {
     return this.authSubject.asObservable();
   }
-  // public logout() {
-  //   localStorage.removeItem('ACCESS_TOKEN');
-  // }
 }

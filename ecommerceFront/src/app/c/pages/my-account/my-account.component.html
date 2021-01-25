@@ -6,9 +6,10 @@
       <h2>Hello</h2>
     </li> -->
     <li>
-      <p>{{ user.lastname }}</p>
+      <!-- <p>{{ data.lastname | async }}</p> -->
     </li>
   </ul>
 
-  <!-- <button (click)="logout()">Se déconnecter</button> -->
+  <a (click)="logout()">Se déconnecter</a>
+  <i class="fas fa-times --cursor --danger" (click)="logout()"></i>
 </div>

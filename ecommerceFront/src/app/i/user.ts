@@ -17,9 +17,6 @@ export interface CurrentUser {
   address: string;
   cp: string;
   town: string;
-}
-
-export interface LoginInfo {
-  password: string;
-  address: string;
+  token: string;
+  expires_in: string;
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { LoginInfo, CurrentUser, User } from '../i/user';
+import { CurrentUser, User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -10,6 +10,10 @@ import { FormGroup } from '@angular/forms';
 export interface login {
   mail: string;
   pswd: string;
+}
+
+export interface Email {
+  email: string;
 }
 
 @Injectable({
@@ -32,15 +36,14 @@ export class UsersService {
   user = {};
   userSubject: Subject<object> = new BehaviorSubject(this.user);
   userObservable: Observable<object> = this.userSubject.asObservable();
+  // ls = { email: localStorage.getItem('EMAIL') };
 
   postUser(data): Observable<object> {
-    this._route.params.subscribe((params) => {
-      console.log('p', params);
-    });
     let http = this._http.post(this._url, data, this._option);
     return http;
   }
 
+  // Création de compte
   register(form: FormGroup) {
     let http = this._http
       .post(this._url.concat('/register'), form.value, this._option)
@@ -53,9 +56,15 @@ export class UsersService {
   login(form: FormGroup): void {
     this._http
       .post(this._url.concat('/login'), form.value, this._option)
-      .subscribe(
-        (data: LoginInfo) => console.log(data),
-        (error) => console.log(error)
-      );
+      .subscribe((data: CurrentUser) => {
+        this.userSubject.next(data);
+      });
+  }
+
+  // get user info with email from JWT token
+  account(ls: Email): Observable<object> {
+    let http = this._http.post(this._url.concat('/account'), ls, this._option);
+
+    return http;
   }
 }

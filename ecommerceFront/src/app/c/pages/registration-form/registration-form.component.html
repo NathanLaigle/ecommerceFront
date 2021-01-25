@@ -20,7 +20,7 @@
                     formControlName="email"
                   />
                   <mat-error *ngIf="authForm.controls.email.invalid">{{
-                    getErrorMessage()
+                    getErrorMessage("email")
                   }}</mat-error>
                 </mat-form-field></mat-grid-tile
               >
@@ -32,8 +32,12 @@
                     type="password"
                     placeholder="Entrez votre mot de passe"
                     formControlName="password"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.password.invalid">{{
+                    getErrorMessage("password")
+                  }}</mat-error>
+                </mat-form-field></mat-grid-tile
+              >
               <mat-grid-tile [colspan]="2">
                 <mat-form-field appearance="outline">
                   <mat-label>Confirmation de mot de passe</mat-label>
@@ -43,12 +47,13 @@
                     placeholder="Confirmez votre mot de passe"
                     formControlName="confirmPassword"
                   />
-                  <!-- <mat-error
+                  <!-- <mat-error>{{ passwordConfirming(authForm) }}</mat-error>
+                  <mat-error
                     *ngIf="
                       authForm.controls.confirmPassword.value !==
                       authForm.controls.password.value
                     "
-                    >{{ getPasswordErrorMessage() }}</mat-error
+                    >{{ getErrorMessage("confirm") }}</mat-error
                   > -->
                 </mat-form-field></mat-grid-tile
               >
@@ -67,8 +72,12 @@
                     type="text"
                     placeholder="Entrez votre Nom"
                     formControlName="lastname"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.lastname.invalid">{{
+                    getErrorMessage("lastname")
+                  }}</mat-error>
+                </mat-form-field></mat-grid-tile
+              >
               <mat-grid-tile [colspan]="1">
                 <mat-form-field appearance="outline">
                   <mat-label>Prénom</mat-label>
@@ -77,8 +86,12 @@
                     type="text"
                     placeholder="Entrez votre Prénom"
                     formControlName="firstname"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.firstname.invalid">{{
+                    getErrorMessage("firstname")
+                  }}</mat-error></mat-form-field
+                ></mat-grid-tile
+              >
               <mat-grid-tile [colspan]="2">
                 <mat-form-field appearance="outline">
                   <mat-label>Adresse</mat-label>
@@ -87,8 +100,12 @@
                     type="text"
                     placeholder="Entrez votre adresse"
                     formControlName="address"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.address.invalid">{{
+                    getErrorMessage("address")
+                  }}</mat-error></mat-form-field
+                ></mat-grid-tile
+              >
               <!-- <mat-grid-tile [colspan]="1"></mat-grid-tile> -->
               <mat-grid-tile [colspan]="1">
                 <mat-form-field appearance="outline">
@@ -98,8 +115,12 @@
                     type="text"
                     placeholder="Entrez votre code postal"
                     formControlName="cp"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.cp.invalid">{{
+                    getErrorMessage("cp")
+                  }}</mat-error></mat-form-field
+                ></mat-grid-tile
+              >
               <mat-grid-tile [colspan]="1">
                 <mat-form-field appearance="outline">
                   <mat-label>Ville</mat-label>
@@ -108,8 +129,12 @@
                     type="text"
                     placeholder="Entrez votre ville"
                     formControlName="town"
-                  /> </mat-form-field
-              ></mat-grid-tile>
+                  />
+                  <mat-error *ngIf="authForm.controls.town.invalid">{{
+                    getErrorMessage("town")
+                  }}</mat-error>
+                </mat-form-field></mat-grid-tile
+              >
             </mat-grid-list>
           </div>
         </mat-grid-tile>

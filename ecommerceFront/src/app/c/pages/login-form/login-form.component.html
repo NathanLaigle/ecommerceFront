@@ -17,8 +17,12 @@
             type="email"
             placeholder="Entrez votre email"
             formControlName="email"
-          /> </mat-form-field
-      ></mat-grid-tile>
+          />
+          <mat-error *ngIf="_authForm.controls.email.invalid">{{
+            getErrorMessage("email")
+          }}</mat-error></mat-form-field
+        ></mat-grid-tile
+      >
 
       <mat-grid-tile [colspan]="1">
         <mat-form-field appearance="outline">
@@ -29,6 +33,9 @@
             placeholder="Entrez votre mot de passe"
             formControlName="password"
           />
+          <mat-error *ngIf="_authForm.controls.password.invalid">{{
+            getErrorMessage("password")
+          }}</mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
