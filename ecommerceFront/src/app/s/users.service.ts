@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CurrentUser, User } from '../i/user';
+import { CurrentUser } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
-import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 
@@ -24,7 +23,6 @@ export class UsersService {
     throw new Error('Method not implemented.');
   }
   constructor(
-    private _route: ActivatedRoute,
     private _http: HttpClient,
     private _apiSettings: ApiSettingsService
   ) {}
