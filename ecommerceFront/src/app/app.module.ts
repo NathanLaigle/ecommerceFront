@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,16 @@ import { CategoryListComponent } from './c/partials/category-list/category-list.
 import { EuroTransformPipe } from './p/euroTransformPipe';
 import { CartItemComponent } from './c/partials/cart-item/cart-item.component';
 import { FooterComponent } from './c/partials/footer/footer.component';
+import { LoginFormComponent } from './c/pages/login-form/login-form.component';
+import { RegistrationFormComponent } from './c/pages/registration-form/registration-form.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -36,8 +47,25 @@ import { FooterComponent } from './c/partials/footer/footer.component';
     EuroTransformPipe,
     CartItemComponent,
     FooterComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatCheckboxModule,
+  ],
   providers: [
     {
       provide: LOCALE_ID,
