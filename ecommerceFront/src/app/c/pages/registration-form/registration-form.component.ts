@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { AuthService } from '../../../s/auth.service';
@@ -28,7 +23,6 @@ export class RegistrationFormComponent implements OnInit {
   public user: CurrentUser;
 
   ngOnInit() {
-    localStorage.clear();
     this.authForm = this.formBuilder.group({
       firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],

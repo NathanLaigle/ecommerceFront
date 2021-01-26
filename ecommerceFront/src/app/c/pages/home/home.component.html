@@ -9,6 +9,9 @@
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla deleniti
         amet corrupti.
       </p>
+      <p class="--py-1" *ngIf="currentUser">
+        Bienvenue - {{ currentUser.firstname }} {{ currentUser.lastname }}
+      </p>
     </div>
   </div>
 </div>

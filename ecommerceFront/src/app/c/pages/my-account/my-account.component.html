@@ -1,15 +1,16 @@
 <p style="margin-top: 200px">my-account works!</p>
 <div style="height: 50vh">
   <ul>
-    <!-- <li *ngFor="let user of users">
-      <h3>{{ user.id }} - {{ user.firstname }}</h3>
-      <h2>Hello</h2>
-    </li> -->
-    <li>
+    <li *ngIf="curUser">
       <p>{{ curUser.lastname }}</p>
+      <p>{{ curUser.firstname }}</p>
+      <p>{{ curUser.address }}</p>
+      <p>{{ curUser.cp }}</p>
+      <p>{{ curUser.town }}</p>
     </li>
   </ul>
 
   <a (click)="logout()">Se déconnecter</a>
   <i class="fas fa-times --cursor --danger" (click)="logout()"></i>
+  <button mat-button color="warn">Supprimer son compte</button>
 </div>
