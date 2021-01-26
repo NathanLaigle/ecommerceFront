@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/i/product';
+import { UsersService } from 'src/app/s/users.service';
 declare const paypal: any;
 
 @Component({
@@ -24,9 +25,12 @@ export class CheckoutComponent implements OnInit {
 
   paidFor: boolean = false;
 
-  constructor() {}
+  constructor(private _user: UsersService) {}
 
   ngOnInit(): void {
+    this._user.userObservable.subscribe((data) => {
+      console.log(data);
+    });
     paypal
       .Buttons({
         createOrder: (data, action) => {
