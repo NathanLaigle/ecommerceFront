@@ -29,6 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonModule } from '@angular/common';
+import { CheckoutComponent } from './c/pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +51,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FooterComponent,
     LoginFormComponent,
     RegistrationFormComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
