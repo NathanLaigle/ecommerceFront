@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CurrentUser } from '../i/user';
+import { CurrentUser, User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
