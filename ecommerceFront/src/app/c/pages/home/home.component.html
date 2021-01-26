@@ -1,12 +1,17 @@
 <!-- top page -->
 <div class="--px-2 first-block-container">
-    <div class="--container --g-a-center --g-j-center --vh-50 --vh-md-40 --round --shadow --p-3 bg-charter-blue first-block">
-        <div class="content --d-flex --a-center --j-center --light">
-            <h1 class="charter-pink --w-100">wf3</h1>
-            <p class="--py-1">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla deleniti amet corrupti.
-            </p>
-        </div>
+  <div
+    class="--container --g-a-center --g-j-center --vh-50 --vh-md-40 --round --shadow --p-3 bg-charter-blue first-block"
+  >
+    <div class="content --d-flex --a-center --j-center --light">
+      <h1 class="charter-pink --w-100">wf3</h1>
+      <p class="--py-1">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla deleniti
+        amet corrupti.
+      </p>
+      <p class="--py-1" *ngIf="currentUser">
+        Bienvenue - {{ currentUser.firstname }} {{ currentUser.lastname }}
+      </p>
     </div>
 </div>
 

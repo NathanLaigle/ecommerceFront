@@ -20,24 +20,36 @@ export class LoginFormComponent implements OnInit {
 
   public _authForm: FormGroup;
   public _isSubmitted = false;
-  authSubject = new BehaviorSubject(false);
+  curUser;
 
   ngOnInit() {
+    localStorage.length > 1 ? this._router.navigateByUrl('/user/account') : '';
     this._authForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+    let decoded: any = '';
     this.login.userObservable.subscribe((data: CurrentUser) => {
       const token = JSON.stringify(data.token);
       if (token) {
-        const decoded: any = jwt_decode(token);
+        decoded = jwt_decode(token);
         const date = new Date(0);
         date.setUTCSeconds(decoded.exp);
         localStorage.setItem('ACCESS_TOKEN', token);
         localStorage.setItem('EXPIRES_IN', date.toString());
         localStorage.setItem('EMAIL', decoded.email);
-        console.log('LF', localStorage);
-        this._router.navigateByUrl('/user/account');
+      }
+      if (decoded) {
+        this.login.getUserFromToken(decoded).subscribe(
+          (data: CurrentUser) => {
+            if (data) {
+              this.curUser = data;
+              localStorage.setItem('CURRENT_USER', JSON.stringify(data));
+              this._router.navigateByUrl('/user/account');
+            }
+          },
+          (error) => console.log(error)
+        );
       }
     });
   }

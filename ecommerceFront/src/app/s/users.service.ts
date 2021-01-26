@@ -34,7 +34,14 @@ export class UsersService {
   user = {};
   userSubject: Subject<object> = new BehaviorSubject(this.user);
   userObservable: Observable<object> = this.userSubject.asObservable();
-  // ls = { email: localStorage.getItem('EMAIL') };
+
+  // fonction pour récupérer user dans le local storage (ne marche pas ?)
+  // getUser() {
+  //   let currentUser =
+  //     localStorage.length > 1
+  //       ? JSON.parse(localStorage.getItem('CURRENT_USER'))
+  //       : '';
+  // }
 
   postUser(data): Observable<object> {
     let http = this._http.post(this._url, data, this._option);
@@ -59,8 +66,16 @@ export class UsersService {
       });
   }
 
+  delete(user: User): void {
+    this._http
+      .post(this._url.concat('/deleteUser'), user.id, this._option)
+      .subscribe((data: any) => {
+        this.userSubject.next(data);
+      });
+  }
+
   // get user info with email from JWT token
-  account(ls: Email): Observable<object> {
+  getUserFromToken(ls: Email): Observable<object> {
     let http = this._http.post(this._url.concat('/account'), ls, this._option);
 
     return http;
