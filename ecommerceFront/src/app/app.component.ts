@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 // import { ActivatedRoute } from '@angular/router';
 import { Product } from './i/product';
@@ -32,7 +33,20 @@ export class AppComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
+  data: any = {
+    testid: 54,
+    testText: 'Bonjour',
+  };
+
   ngOnInit(): void {
+    // this._http
+    //   .put(
+    //     'https://webfleur3-default-rtdb.europe-west1.firebasedatabase.app/user54.json',
+    //     this.data
+    //   )
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
     this.innerWidth = window.innerWidth;
     this._nframe.doAll();
   }
