@@ -1,6 +1,6 @@
 <div class="width">
-  <mat-grid-list cols="1" rowHeight="100px">
-    <mat-grid-tile [colspan]="1">
+  <mat-grid-list cols="2" rowHeight="5:1" gutterSize="10px">
+    <mat-grid-tile [colspan]="2">
       <h1 style="text-align: center">Se connecter à son compte</h1>
     </mat-grid-tile>
 
@@ -9,8 +9,8 @@
       class="login-container"
       (ngSubmit)="login.login(_authForm)"
     >
-      <mat-grid-tile [colspan]="1">
-        <mat-form-field appearance="outline">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field class="--w-50" appearance="outline">
           <mat-label>Email</mat-label>
           <input
             matInput
@@ -24,8 +24,8 @@
         ></mat-grid-tile
       >
 
-      <mat-grid-tile [colspan]="1">
-        <mat-form-field appearance="outline">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field class="--w-50" appearance="outline">
           <mat-label>Mot de passe</mat-label>
           <input
             matInput
@@ -39,14 +39,21 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="1">
+      <mat-grid-tile [colspan]="2">
         <a class="example-margin">Mot de passe oublié</a>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="1">
-        <button type="submit" mat-raised-button color="primary">
+      <mat-grid-tile [colspan]="2">
+        <button mat-raised-button color="charter-pink" type="submit">
           Se connecter
         </button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <a routerLink="/user/register">
+          <button mat-raised-button color="charter-blue" type="submit">
+            Créer un compte
+          </button></a
+        >
       </mat-grid-tile>
     </form>
   </mat-grid-list>

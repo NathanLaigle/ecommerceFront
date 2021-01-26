@@ -13,13 +13,24 @@ export class MyAccountComponent implements OnInit {
   public curUser: CurrentUser;
 
   ngOnInit(): void {
-    this.curUser =
-      localStorage.length > 1
-        ? JSON.parse(localStorage.getItem('CURRENT_USER'))
-        : '';
+    this.curUser = localStorage.getItem('CURRENT_USER')
+      ? JSON.parse(localStorage.getItem('CURRENT_USER'))
+      : '';
+    !this.curUser ? this._router.navigateByUrl('/user/login') : '';
   }
 
-  deleteAccount() {}
+  deleteAccount(): void {
+    this._user.delete(this.curUser.id).subscribe(
+      (data) => {
+        localStorage.clear();
+        this._router.navigate(['/user/login']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   logout() {
     //envoyer donnée vide au usersubject
     localStorage.removeItem('ACCESS_TOKEN');

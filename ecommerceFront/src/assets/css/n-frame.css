@@ -894,7 +894,7 @@ button:focus {
   bottom: 0;
 }
 .--light-neum {
-  box-shadow: 5px 5px 3px #f5f5f5, -5px -5px 2px #ffffff;
+  box-shadow: 5px 5px 3px #f5f5f5, -5px -5px 2px #fff;
 }
 .--dark-neum {
   box-shadow: 5px 5px 15px #090909, -5px -5px 15px #1b1b1b;
@@ -1192,8 +1192,17 @@ body {
 .--m-2 {
   margin: 2em;
 }
-.--m-3 {
-  margin: 3em;
+.--mx-0 {
+  margin: 0;
+}
+.--mx-1 {
+  margin: 0 1em;
+}
+.--mx-2 {
+  margin: 0 2em;
+}
+.--mx-3 {
+  margin: 0 3em;
 }
 .--h-10 {
   height: 10%;
@@ -1890,4 +1899,3 @@ body {
     display: block;
   }
 }
-/*# sourceMappingURL=n-frame.min.css.map */

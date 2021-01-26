@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from '../../../s/users.service';
-import { BehaviorSubject } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 
 @Component({
@@ -23,7 +22,9 @@ export class LoginFormComponent implements OnInit {
   curUser;
 
   ngOnInit() {
-    localStorage.length > 1 ? this._router.navigateByUrl('/user/account') : '';
+    localStorage.getItem('CURRENT_USER')
+      ? this._router.navigateByUrl('/user/account')
+      : '';
     this._authForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -33,6 +34,7 @@ export class LoginFormComponent implements OnInit {
       const token = JSON.stringify(data.token);
       if (token) {
         decoded = jwt_decode(token);
+        console.log(decoded);
         const date = new Date(0);
         date.setUTCSeconds(decoded.exp);
         localStorage.setItem('ACCESS_TOKEN', token);
@@ -45,7 +47,7 @@ export class LoginFormComponent implements OnInit {
             if (data) {
               this.curUser = data;
               localStorage.setItem('CURRENT_USER', JSON.stringify(data));
-              this._router.navigateByUrl('/user/account');
+              this._router.navigateByUrl('/');
             }
           },
           (error) => console.log(error)

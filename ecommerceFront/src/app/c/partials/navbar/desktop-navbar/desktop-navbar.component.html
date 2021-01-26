@@ -28,9 +28,17 @@
       <div
         class="--container --col-2 --g-a-center --gap-2 --px-2 --light-shadow --full-round"
       >
-        <a [routerLink]="['/user/login']" [routerLinkActive]="'active-route'"
-          ><i class="fas fa-user --cursor"></i
-        ></a>
+        <a
+          *ngIf="curUser; else elseBlock"
+          [routerLink]="['/user/account']"
+          [routerLinkActive]="'active-route'"
+          ><i class="fas fa-user --cursor"></i>
+        </a>
+        <ng-template #elseBlock>
+          <a [routerLink]="['/user/login']" [routerLinkActive]="'active-route'"
+            ><i class="fas fa-user --cursor"></i> </a
+        ></ng-template>
+
         <i class="fas fa-shopping-cart --cursor" id="cart" data-drop="cart"></i>
       </div>
     </div>
