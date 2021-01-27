@@ -1,6 +1,7 @@
+<h1 class="--p-1">Validation</h1>
 <section class="" *ngIf="!paidFor">
-    <div class="--container --col-3 --gap-2 --p-3">
-        <div class="--container --gap-2 --p-2 --round --light-shadow">
+    <div class="--container --col-md-3 --gap-2 --p-3">
+        <div class="--container --gap-2 --p-2 --round --light-shadow --bg-light">
             <h1>Utilisateur</h1>
             <div>
                 <p>{{currentUser.lastname}}</p>
@@ -19,12 +20,12 @@
                 </button>
             </div>
         </div>
-        <div class="--container --gap-2 --p-2 --round --light-shadow">
+        <div class="--container --gap-2 --p-2 --round --light-shadow --bg-light">
             <h1>Panier</h1>
             <p *ngIf="total > 0">Total : {{ total | euroTransform }} €</p>
             <!-- check cart content -->
             <div *ngIf="cart.length > 0" class="--container --gap-1">
-                <div *ngFor="let item of cart" class="--p-1 --round --light-shadow --container --gap-1 --col-3">
+                <div *ngFor="let item of cart" class="--p-1 --round --light-shadow --container --g-a-center --gap-1 --col-3">
                     <p>{{ item.quantity }}</p>
                     <h2>{{ item.product.name }}</h2>
                     <p>{{ item.product.price | euroTransform }} €</p>
@@ -47,6 +48,8 @@
     </div>
 </section>
 
-<div class="" *ngIf="paidFor ">
-    paiement effectué !
+<div class="--vh-75 --d-flex --j-center --d-center" *ngIf="paidFor ">
+    <h1>
+        paiement effectué !
+    </h1>
 </div>

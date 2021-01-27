@@ -44,8 +44,6 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
     this.currentUser = localStorage.getItem('CURRENT_USER')
       ? JSON.parse(localStorage.getItem('CURRENT_USER'))
       : this._router.navigateByUrl('/user/login');
-
-    console.log(this.currentUser);
   }
 
   ngAfterViewInit() {

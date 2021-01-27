@@ -22,6 +22,10 @@
 
 body {
     background-color: whitesmoke;
+    position: relative;
+    min-height: 100vh;
+    height: fit-content !important;
+    padding-bottom: 15vh;
 }
 
 button {
@@ -31,6 +35,13 @@ button {
 *::selection {
     background-color: $charter-pink;
     color: #fff;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 
@@ -87,5 +98,13 @@ a.active-route-mobile {
 .--round {
     border-radius: 15px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
