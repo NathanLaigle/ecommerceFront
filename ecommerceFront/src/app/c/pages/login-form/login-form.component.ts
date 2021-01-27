@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from '../../../s/users.service';
-import { BehaviorSubject } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { NotificationsService } from '../../../s/notifications.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,15 +15,18 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
+    private _toastr: NotificationsService,
     public login: UsersService
   ) {}
 
   public _authForm: FormGroup;
   public _isSubmitted = false;
-  curUser;
+  public curUser: CurrentUser;
 
   ngOnInit() {
-    localStorage.length > 1 ? this._router.navigateByUrl('/user/account') : '';
+    localStorage.getItem('CURRENT_USER')
+      ? this._router.navigateByUrl('/user/account')
+      : '';
     this._authForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -33,6 +36,7 @@ export class LoginFormComponent implements OnInit {
       const token = JSON.stringify(data.token);
       if (token) {
         decoded = jwt_decode(token);
+        console.log(decoded);
         const date = new Date(0);
         date.setUTCSeconds(decoded.exp);
         localStorage.setItem('ACCESS_TOKEN', token);
@@ -45,7 +49,11 @@ export class LoginFormComponent implements OnInit {
             if (data) {
               this.curUser = data;
               localStorage.setItem('CURRENT_USER', JSON.stringify(data));
-              this._router.navigateByUrl('/user/account');
+              // this._toastr.showSuccess(
+              //   'vous êtes connecté',
+              //   `Bonjour, ${this.curUser.firstname}`
+              // );
+              this._router.navigateByUrl('/');
             }
           },
           (error) => console.log(error)

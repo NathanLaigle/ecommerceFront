@@ -8,7 +8,7 @@ import { ProductArchiveComponent } from './c/pages/product-archive/product-archi
 import { ProductSingleComponent } from './c/pages/product-single/product-single.component';
 import { LoginFormComponent } from './c/pages/login-form/login-form.component';
 import { RegistrationFormComponent } from './c/pages/registration-form/registration-form.component';
-import { AuthGuard } from './auth.guard';
+import { UpdateFormComponent } from './c/pages/update-form/update-form.component';
 
 const routes: Routes = [
   { path: 'user/login', component: LoginFormComponent },
@@ -18,6 +18,7 @@ const routes: Routes = [
     component: MyAccountComponent,
     // canActivate: [AuthGuard],
   },
+  { path: 'user/update-account', component: UpdateFormComponent },
   { path: 'categorie/:id', component: ProductArchiveComponent },
   { path: 'produit/:id', component: ProductSingleComponent },
   { path: 'checkout', component: CheckoutComponent },

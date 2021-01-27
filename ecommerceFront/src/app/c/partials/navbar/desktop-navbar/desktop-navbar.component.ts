@@ -4,6 +4,7 @@ import { Category } from 'src/app/i/category';
 import { NFrameService } from 'src/app/s/animation/n-frame.service';
 import { CartService } from 'src/app/s/cart.service';
 import { CategoryService } from 'src/app/s/category.service';
+import { CurrentUser } from '../../../../i/user';
 
 @Component({
   selector: 'app-desktop-navbar',
@@ -19,8 +20,13 @@ export class DesktopNavbarComponent implements OnInit {
 
   public cart: CartItem[];
   public categories: Category[];
+  public curUser: CurrentUser;
 
   ngOnInit(): void {
+    this.curUser = localStorage.getItem('CURRENT_USER')
+      ? JSON.parse(localStorage.getItem('CURRENT_USER'))
+      : '';
+    console.log(this.curUser);
     this._nframe.drop();
     this._cart.cartObservable.subscribe((data: CartItem[]) => {
       this.cart = data;

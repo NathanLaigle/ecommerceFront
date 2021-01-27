@@ -35,14 +35,6 @@ export class UsersService {
   userSubject: Subject<object> = new BehaviorSubject(this.user);
   userObservable: Observable<object> = this.userSubject.asObservable();
 
-  // fonction pour récupérer user dans le local storage (ne marche pas ?)
-  // getUser() {
-  //   let currentUser =
-  //     localStorage.length > 1
-  //       ? JSON.parse(localStorage.getItem('CURRENT_USER'))
-  //       : '';
-  // }
-
   postUser(data): Observable<object> {
     let http = this._http.post(this._url, data, this._option);
     return http;
@@ -61,14 +53,18 @@ export class UsersService {
   login(form: FormGroup): void {
     this._http
       .post(this._url.concat('/login'), form.value, this._option)
-      .subscribe((data: CurrentUser) => {
-        this.userSubject.next(data);
-      });
+      .subscribe(
+        (data: CurrentUser) => this.userSubject.next(data),
+        (error) => console.log(error)
+      );
+  }
+  delete(id: number): Observable<any> {
+    return this._http.delete(this._url.concat(`/deleteuser/${id}`));
   }
 
-  delete(user: User): void {
+  update(user: User): void {
     this._http
-      .post(this._url.concat('/deleteUser'), user.id, this._option)
+      .post(this._url.concat('/updateUser'), user.id, this._option)
       .subscribe((data: any) => {
         this.userSubject.next(data);
       });

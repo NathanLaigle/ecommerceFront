@@ -3,32 +3,38 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from 'src/app/s/users.service';
-import { NotificationsService } from '../../../s/notifications.service';
 
 @Component({
-  selector: 'app-registration-form',
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss'],
+  selector: 'app-update-form',
+  templateUrl: './update-form.component.html',
+  styleUrls: ['./update-form.component.scss'],
 })
-export class RegistrationFormComponent implements OnInit {
+export class UpdateFormComponent implements OnInit {
   constructor(
     private _router: Router,
-    private _formBuilder: FormBuilder,
-    private _toastr: NotificationsService,
-    public register: UsersService
+    private formBuilder: FormBuilder,
+    public update: UsersService
   ) {}
 
   public authForm: FormGroup;
   public isSubmitted = false;
-  public user: CurrentUser;
   public curUser: CurrentUser;
-  public errorMessage: any = '';
 
   ngOnInit() {
-    this.authForm = this._formBuilder.group({
-      firstname: ['', [Validators.required, Validators.minLength(3)]],
-      lastname: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
+    !localStorage.getItem('CURRENT_USER')
+      ? this._router.navigateByUrl('/user/login')
+      : '';
+    this.curUser = JSON.parse(localStorage.getItem('CURRENT_USER'));
+    this.authForm = this.formBuilder.group({
+      firstname: [
+        this.curUser.firstname,
+        [Validators.required, Validators.minLength(3)],
+      ],
+      lastname: [
+        this.curUser.lastname,
+        [Validators.required, Validators.minLength(3)],
+      ],
+      email: [this.curUser.email, [Validators.required, Validators.email]],
       password: [
         '',
         [
@@ -39,32 +45,22 @@ export class RegistrationFormComponent implements OnInit {
         ],
       ],
       confirmPassword: ['', Validators.required],
-      address: ['', [Validators.required, Validators.minLength(3)]],
-      cp: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
-      town: ['', [Validators.required, Validators.minLength(3)]],
+      address: [
+        this.curUser.address,
+        [Validators.required, Validators.minLength(3)],
+      ],
+      cp: [
+        this.curUser.cp,
+        [Validators.required, Validators.pattern('[0-9]{5}')],
+      ],
+      town: [this.curUser.town, [Validators.required, Validators.minLength(3)]],
     });
-
-    this.register.userObservable.subscribe(
-      (data: CurrentUser) => {
-        if (data.id) {
-          this.curUser = data;
-          this._toastr.showSuccess(
-            'Votre compte est maintenant créé',
-            `Bienvenue, ${this.curUser.firstname}`,
-            {
-              positionClass: 'toast-top-center',
-            }
-          );
-          const url = '/user/login';
-          this._router.navigateByUrl(url);
-        }
-      },
-      (error) => {
-        //Error callback
-        console.error('error caught in component');
-        console.log(error.title);
+    this.update.userObservable.subscribe((data: CurrentUser) => {
+      if (data.id) {
+        const url = '/user/login';
+        this._router.navigateByUrl(url);
       }
-    );
+    });
   }
 
   getErrorMessage(item: string) {
