@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Email, UsersService } from 'src/app/s/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-account',
@@ -9,8 +10,16 @@ import { CurrentUser, User } from '../../../i/user';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  constructor(private _user: UsersService, private _router: Router) {}
+  constructor(
+    private _user: UsersService,
+    private _router: Router,
+    private _toastr: ToastrService
+  ) {}
   public curUser: CurrentUser;
+
+  showSuccess(message) {
+    this._toastr.success(message);
+  }
 
   ngOnInit(): void {
     this.curUser = localStorage.getItem('CURRENT_USER')
@@ -37,6 +46,7 @@ export class MyAccountComponent implements OnInit {
     localStorage.removeItem('EXPIRES_IN');
     localStorage.removeItem('EMAIL');
     localStorage.removeItem('CURRENT_USER');
+    this.showSuccess('Vous êtes maintenant déconnecté(e)');
     // console.log('MA', localStorage);
     this._router.navigateByUrl('/');
   }

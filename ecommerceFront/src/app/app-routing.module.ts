@@ -9,7 +9,6 @@ import { ProductSingleComponent } from './c/pages/product-single/product-single.
 import { LoginFormComponent } from './c/pages/login-form/login-form.component';
 import { RegistrationFormComponent } from './c/pages/registration-form/registration-form.component';
 import { UpdateFormComponent } from './c/pages/update-form/update-form.component';
-import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'user/login', component: LoginFormComponent },

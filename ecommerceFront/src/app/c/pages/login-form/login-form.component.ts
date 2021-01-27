@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from '../../../s/users.service';
 import jwt_decode from 'jwt-decode';
+import { NotificationsService } from '../../../s/notifications.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,12 +15,13 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
+    private _toastr: NotificationsService,
     public login: UsersService
   ) {}
 
   public _authForm: FormGroup;
   public _isSubmitted = false;
-  curUser;
+  public curUser: CurrentUser;
 
   ngOnInit() {
     localStorage.getItem('CURRENT_USER')
@@ -47,6 +49,10 @@ export class LoginFormComponent implements OnInit {
             if (data) {
               this.curUser = data;
               localStorage.setItem('CURRENT_USER', JSON.stringify(data));
+              // this._toastr.showSuccess(
+              //   'vous êtes connecté',
+              //   `Bonjour, ${this.curUser.firstname}`
+              // );
               this._router.navigateByUrl('/');
             }
           },

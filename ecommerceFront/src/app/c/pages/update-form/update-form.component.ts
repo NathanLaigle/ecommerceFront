@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
-import { AuthService } from '../../../s/auth.service';
 import { UsersService } from 'src/app/s/users.service';
 
 @Component({
@@ -12,7 +11,6 @@ import { UsersService } from 'src/app/s/users.service';
 })
 export class UpdateFormComponent implements OnInit {
   constructor(
-    private authService: AuthService,
     private _router: Router,
     private formBuilder: FormBuilder,
     public update: UsersService

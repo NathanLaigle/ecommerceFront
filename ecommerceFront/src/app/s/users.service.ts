@@ -55,9 +55,10 @@ export class UsersService {
   login(form: FormGroup): void {
     this._http
       .post(this._url.concat('/login'), form.value, this._option)
-      .subscribe((data: CurrentUser) => {
-        this.userSubject.next(data);
-      });
+      .subscribe(
+        (data: CurrentUser) => this.userSubject.next(data),
+        (error) => console.log(error)
+      );
   }
   delete(id: number): Observable<any> {
     return this._http.delete(this._url.concat(`/deleteuser/${id}`));
