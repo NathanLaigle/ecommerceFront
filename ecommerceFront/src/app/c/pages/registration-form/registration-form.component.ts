@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControlOptions,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from 'src/app/s/users.service';
 import { NotificationsService } from '../../../s/notifications.service';
+import { MustMatch } from '../../../p/must-match';
 
 @Component({
   selector: 'app-registration-form',
@@ -25,24 +31,30 @@ export class RegistrationFormComponent implements OnInit {
   public errorMessage: any = '';
 
   ngOnInit() {
-    this.authForm = this._formBuilder.group({
-      firstname: ['', [Validators.required, Validators.minLength(3)]],
-      lastname: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
-          ),
+    const formOptions: AbstractControlOptions = {
+      validators: MustMatch('password', 'confirmPassword'),
+    };
+    this.authForm = this._formBuilder.group(
+      {
+        firstname: ['', [Validators.required, Validators.minLength(3)]],
+        lastname: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
+            ),
+          ],
         ],
-      ],
-      confirmPassword: ['', Validators.required],
-      address: ['', [Validators.required, Validators.minLength(3)]],
-      cp: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
-      town: ['', [Validators.required, Validators.minLength(3)]],
-    });
+        confirmPassword: ['', Validators.required],
+        address: ['', [Validators.required, Validators.minLength(3)]],
+        cp: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
+        town: ['', [Validators.required, Validators.minLength(3)]],
+      },
+      formOptions
+    );
 
     this.register.userObservable.subscribe(
       (data: CurrentUser) => {
@@ -73,6 +85,7 @@ export class RegistrationFormComponent implements OnInit {
     const lastnameErr = error.lastname;
     const firstnameErr = error.firstname;
     const passwordErr = error.password;
+    const confirmPassErr = error.confirmPassword;
     const addressErr = error.address;
     const cpErr = error.cp;
     const townErr = error.town;
@@ -104,6 +117,10 @@ export class RegistrationFormComponent implements OnInit {
         return passwordErr.hasError('pattern')
           ? 'Le mot de passe dois contenir 8 caractères avec un chiffre et une lettre majuscule'
           : '';
+      case 'confirmPassword':
+        if (confirmPassErr.hasError('mustMatch')) {
+          return 'Les mots de passe ne correspondent pas';
+        }
       case 'address':
         if (addressErr.hasError('required')) {
           return 'Vous devez entrer votre adresse';

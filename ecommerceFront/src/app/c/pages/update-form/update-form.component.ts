@@ -10,6 +10,7 @@ import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from 'src/app/s/users.service';
 import { NotificationsService } from '../../../s/notifications.service';
 import { MustMatch } from '../../../p/must-match';
+import { FormErrorsService } from '../../../s/form-errors.service';
 
 @Component({
   selector: 'app-update-form',
@@ -22,7 +23,8 @@ export class UpdateFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public update: UsersService,
     public _user: UsersService,
-    public _notif: NotificationsService
+    public _notif: NotificationsService,
+    public _formErrors: FormErrorsService
   ) {}
 
   public authForm: FormGroup;
@@ -63,7 +65,6 @@ export class UpdateFormComponent implements OnInit {
       },
       formOptions
     );
-    console.log(this.authForm.controls);
 
     this._user
       .getUserFromId(this.curUser.id)
@@ -83,7 +84,7 @@ export class UpdateFormComponent implements OnInit {
     });
   }
 
-  getErrorMessage(form: FormGroup, item: string) {
+  getErrorMessage(item: string) {
     const error = this.authForm.controls;
     const emailErr = error.email;
     const lastnameErr = error.lastname;

@@ -47,14 +47,9 @@
                     placeholder="Confirmez votre mot de passe"
                     formControlName="confirmPassword"
                   />
-                  <!-- <mat-error>{{ passwordConfirming(authForm) }}</mat-error>
-                  <mat-error
-                    *ngIf="
-                      authForm.controls.confirmPassword.value !==
-                      authForm.controls.password.value
-                    "
-                    >{{ getErrorMessage("confirm") }}</mat-error
-                  > -->
+                  <mat-error *ngIf="authForm.controls.confirmPassword.invalid">
+                    {{ getErrorMessage("confirmPassword") }}</mat-error
+                  >
                 </mat-form-field></mat-grid-tile
               >
             </mat-grid-list>
@@ -141,7 +136,9 @@
       </mat-grid-list>
       <mat-divider></mat-divider>
       <mat-grid-tile [colspan]="12" [rowspan]="3">
-        <button type="submit" mat-raised-button color="primary">Créer son compte</button>
+        <button type="submit" mat-raised-button color="primary">
+          Créer son compte
+        </button>
       </mat-grid-tile>
     </form>
   </mat-grid-list>
