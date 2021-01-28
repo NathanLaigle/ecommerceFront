@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { CurrentUser, User } from '../i/user';
 import { ApiSettingsService } from './api-settings.service';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
+import { throwError, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface login {
   mail: string;
@@ -55,19 +57,11 @@ export class UsersService {
       .post(this._url.concat('/login'), form.value, this._option)
       .subscribe(
         (data: CurrentUser) => this.userSubject.next(data),
-        (error) => console.log(error)
+        (error: HttpErrorResponse) => this.userSubject.next(error)
       );
   }
   delete(id: number): Observable<any> {
     return this._http.delete(this._url.concat(`/deleteuser/${id}`));
-  }
-
-  update(user: User): void {
-    this._http
-      .post(this._url.concat('/updateUser'), user.id, this._option)
-      .subscribe((data: any) => {
-        this.userSubject.next(data);
-      });
   }
 
   // get user info with email from JWT token
@@ -75,5 +69,23 @@ export class UsersService {
     let http = this._http.post(this._url.concat('/account'), ls, this._option);
 
     return http;
+  }
+
+  getUserFromId(id: number): Observable<object> {
+    let http = this._http.get(this._url.concat(`/account/${id}`), this._option);
+
+    return http;
+  }
+
+  update(form: FormGroup) {
+    let http = this._http
+      .put(
+        this._url.concat(`/update/${form.value.id}`),
+        form.value,
+        this._option
+      )
+      .subscribe((data: CurrentUser) => {
+        this.userSubject.next(data);
+      });
   }
 }

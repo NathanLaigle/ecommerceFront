@@ -4,6 +4,7 @@ import { Category } from 'src/app/i/category';
 import { NFrameService } from 'src/app/s/animation/n-frame.service';
 import { CartService } from 'src/app/s/cart.service';
 import { CategoryService } from 'src/app/s/category.service';
+import { CurrentUser } from '../../../../i/user';
 declare let $: any;
 
 @Component({
@@ -16,7 +17,13 @@ export class MobileNavbarComponent implements OnInit {
     private _nframe: NFrameService,
     private _categories: CategoryService,
     private _cart: CartService
-  ) {}
+  ) {
+    this.curUser = localStorage.getItem('CURRENT_USER')
+      ? JSON.parse(localStorage.getItem('CURRENT_USER'))
+      : '';
+  }
+
+  public curUser: CurrentUser;
 
   ngOnInit(): void {
     this._nframe.drop();

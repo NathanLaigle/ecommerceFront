@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     this.currentUser = localStorage.getItem('CURRENT_USER')
       ? JSON.parse(localStorage.getItem('CURRENT_USER'))
       : '';
-
     let subProducts = this._products.http.subscribe((data: Product[]) => {
       this.products = data;
       subProducts.unsubscribe();
