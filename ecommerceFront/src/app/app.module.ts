@@ -34,6 +34,8 @@ import { CheckoutComponent } from './c/pages/checkout/checkout.component';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MediaQueryStatusComponent } from './media-query-status.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { ToastrModule } from 'ngx-toastr';
     RegistrationFormComponent,
     CheckoutComponent,
     UpdateFormComponent,
+
+    MediaQueryStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    FlexLayoutModule,
   ],
   providers: [
     {

@@ -29,6 +29,7 @@ export class RegistrationFormComponent implements OnInit {
   public user: CurrentUser;
   public curUser: CurrentUser;
   public errorMessage: any = '';
+  public breakpoint: number;
 
   ngOnInit() {
     const formOptions: AbstractControlOptions = {
