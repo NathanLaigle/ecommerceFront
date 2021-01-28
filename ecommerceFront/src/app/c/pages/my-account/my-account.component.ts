@@ -45,11 +45,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   logout() {
-    //envoyer donnée vide au usersubject
-    localStorage.removeItem('ACCESS_TOKEN');
-    localStorage.removeItem('EXPIRES_IN');
-    localStorage.removeItem('EMAIL');
-    localStorage.removeItem('CURRENT_USER');
+    localStorage.clear();
     this._notif.showSuccess('Vous êtes maintenant déconnecté(e)', 'Au revoir');
     this._router.navigateByUrl('/');
   }
