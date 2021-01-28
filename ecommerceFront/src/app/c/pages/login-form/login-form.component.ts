@@ -5,6 +5,7 @@ import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from '../../../s/users.service';
 import jwt_decode from 'jwt-decode';
 import { NotificationsService } from '../../../s/notifications.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-form',
@@ -27,39 +28,43 @@ export class LoginFormComponent implements OnInit {
     localStorage.getItem('CURRENT_USER')
       ? this._router.navigateByUrl('/user/account')
       : '';
+
     this._authForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
     let decoded: any = '';
-    this.login.userObservable.subscribe((data: CurrentUser) => {
-      const token = JSON.stringify(data.token);
-      if (token) {
-        decoded = jwt_decode(token);
-        console.log(decoded);
-        const date = new Date(0);
-        date.setUTCSeconds(decoded.exp);
-        localStorage.setItem('ACCESS_TOKEN', token);
-        localStorage.setItem('EXPIRES_IN', date.toString());
-        localStorage.setItem('EMAIL', decoded.email);
+    this.login.userObservable.subscribe(
+      (data: CurrentUser) => {
+        const token = JSON.stringify(data.token);
+        if (token) {
+          decoded = jwt_decode(token);
+          const date = new Date(0);
+          date.setUTCSeconds(decoded.exp);
+          localStorage.setItem('ACCESS_TOKEN', token);
+          localStorage.setItem('EXPIRES_IN', date.toString());
+          localStorage.setItem('EMAIL', decoded.email);
+        }
+        if (decoded) {
+          this.login
+            .getUserFromToken(decoded)
+            .subscribe((data: CurrentUser) => {
+              if (data) {
+                this.curUser = data;
+                localStorage.setItem('CURRENT_USER', JSON.stringify(data));
+                this._toastr.showInfo(
+                  'vous êtes connecté',
+                  `Bonjour, ${this.curUser.firstname}`
+                );
+                this._router.navigateByUrl('/');
+              }
+            });
+        }
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
-      if (decoded) {
-        this.login.getUserFromToken(decoded).subscribe(
-          (data: CurrentUser) => {
-            if (data) {
-              this.curUser = data;
-              localStorage.setItem('CURRENT_USER', JSON.stringify(data));
-              // this._toastr.showSuccess(
-              //   'vous êtes connecté',
-              //   `Bonjour, ${this.curUser.firstname}`
-              // );
-              this._router.navigateByUrl('/');
-            }
-          },
-          (error) => console.log(error)
-        );
-      }
-    });
+    );
   }
 
   getErrorMessage(item: string) {

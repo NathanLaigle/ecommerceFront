@@ -7,19 +7,23 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NotificationsService {
   constructor(private _toastr: ToastrService) {}
-  showSuccess(message: string, title: string, option: {}) {
-    this._toastr.success(message, title, option);
+
+  public option: {} = {
+    positionClass: 'toast-bottom-full-width',
+  };
+  showSuccess(message: string, title: string) {
+    this._toastr.success(message, title, this.option);
   }
 
   showError(message: string, title: string) {
-    this._toastr.error(message, title);
+    this._toastr.error(message, title, this.option);
   }
 
   showInfo(message: string, title: string) {
-    this._toastr.info(message, title);
+    this._toastr.info(message, title, this.option);
   }
 
   showWarning(message: string, title: string) {
-    this._toastr.warning(message, title);
+    this._toastr.warning(message, title, this.option);
   }
 }

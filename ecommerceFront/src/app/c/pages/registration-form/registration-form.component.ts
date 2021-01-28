@@ -50,17 +50,17 @@ export class RegistrationFormComponent implements OnInit {
           this.curUser = data;
           this._toastr.showSuccess(
             'Votre compte est maintenant créé',
-            `Bienvenue, ${this.curUser.firstname}`,
-            {
-              positionClass: 'toast-top-center',
-            }
+            `Bienvenue, ${this.curUser.firstname}`
           );
           const url = '/user/login';
           this._router.navigateByUrl(url);
         }
       },
       (error) => {
-        //Error callback
+        this._toastr.showError(
+          "Il y a eu erreur lors de l'inscription",
+          'Erreur'
+        );
         console.error('error caught in component');
         console.log(error.title);
       }

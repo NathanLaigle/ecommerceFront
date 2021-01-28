@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Email, UsersService } from 'src/app/s/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
-import { ToastrService } from 'ngx-toastr';
+import { NotificationsService } from '../../../s/notifications.service';
 
 @Component({
   selector: 'app-my-account',
@@ -13,13 +13,9 @@ export class MyAccountComponent implements OnInit {
   constructor(
     private _user: UsersService,
     private _router: Router,
-    private _toastr: ToastrService
+    private _notif: NotificationsService
   ) {}
   public curUser: CurrentUser;
-
-  showSuccess(message) {
-    this._toastr.success(message);
-  }
 
   ngOnInit(): void {
     this.curUser = localStorage.getItem('CURRENT_USER')
@@ -32,9 +28,17 @@ export class MyAccountComponent implements OnInit {
     this._user.delete(this.curUser.id).subscribe(
       (data) => {
         localStorage.clear();
+        this._notif.showWarning(
+          'Votre compte a bien été supprimé',
+          'A bientôt'
+        );
         this._router.navigate(['/user/login']);
       },
       (error) => {
+        this._notif.showError(
+          'Veuillez recommencer',
+          'Erreur lors de la suppression'
+        );
         console.log(error);
       }
     );
@@ -46,8 +50,7 @@ export class MyAccountComponent implements OnInit {
     localStorage.removeItem('EXPIRES_IN');
     localStorage.removeItem('EMAIL');
     localStorage.removeItem('CURRENT_USER');
-    this.showSuccess('Vous êtes maintenant déconnecté(e)');
-    // console.log('MA', localStorage);
+    this._notif.showSuccess('Vous êtes maintenant déconnecté(e)', 'Au revoir');
     this._router.navigateByUrl('/');
   }
 }

@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControlOptions,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUser, User } from '../../../i/user';
 import { UsersService } from 'src/app/s/users.service';
+import { NotificationsService } from '../../../s/notifications.service';
+import { MustMatch } from '../../../p/must-match';
 
 @Component({
   selector: 'app-update-form',
@@ -13,7 +20,9 @@ export class UpdateFormComponent implements OnInit {
   constructor(
     private _router: Router,
     private formBuilder: FormBuilder,
-    public update: UsersService
+    public update: UsersService,
+    public _user: UsersService,
+    public _notif: NotificationsService
   ) {}
 
   public authForm: FormGroup;
@@ -21,53 +30,65 @@ export class UpdateFormComponent implements OnInit {
   public curUser: CurrentUser;
 
   ngOnInit() {
+    this.curUser = JSON.parse(localStorage.getItem('CURRENT_USER'));
     !localStorage.getItem('CURRENT_USER')
       ? this._router.navigateByUrl('/user/login')
       : '';
+
     this.curUser = JSON.parse(localStorage.getItem('CURRENT_USER'));
-    this.authForm = this.formBuilder.group({
-      firstname: [
-        this.curUser.firstname,
-        [Validators.required, Validators.minLength(3)],
-      ],
-      lastname: [
-        this.curUser.lastname,
-        [Validators.required, Validators.minLength(3)],
-      ],
-      email: [this.curUser.email, [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
-          ),
+
+    const formOptions: AbstractControlOptions = {
+      validators: MustMatch('password', 'confirmPassword'),
+    };
+
+    this.authForm = this.formBuilder.group(
+      {
+        id: [''],
+        firstname: ['', [Validators.required, Validators.minLength(3)]],
+        lastname: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
+            ),
+          ],
         ],
-      ],
-      confirmPassword: ['', Validators.required],
-      address: [
-        this.curUser.address,
-        [Validators.required, Validators.minLength(3)],
-      ],
-      cp: [
-        this.curUser.cp,
-        [Validators.required, Validators.pattern('[0-9]{5}')],
-      ],
-      town: [this.curUser.town, [Validators.required, Validators.minLength(3)]],
-    });
+        confirmPassword: ['', Validators.required],
+        address: ['', [Validators.required, Validators.minLength(3)]],
+        cp: ['', [Validators.required, Validators.pattern('[0-9]{5}')]],
+        town: ['', [Validators.required, Validators.minLength(3)]],
+      },
+      formOptions
+    );
+    console.log(this.authForm.controls);
+
+    this._user
+      .getUserFromId(this.curUser.id)
+      .subscribe((data: User) => this.authForm.patchValue(data));
+
     this.update.userObservable.subscribe((data: CurrentUser) => {
       if (data.id) {
+        localStorage.clear();
+
         const url = '/user/login';
         this._router.navigateByUrl(url);
+        this._notif.showSuccess(
+          'vos modifications ont bien été prises en compte',
+          'Merci de vous reconnecter'
+        );
       }
     });
   }
 
-  getErrorMessage(item: string) {
+  getErrorMessage(form: FormGroup, item: string) {
     const error = this.authForm.controls;
     const emailErr = error.email;
     const lastnameErr = error.lastname;
     const firstnameErr = error.firstname;
+    const confirmPassErr = error.confirmPassword;
     const passwordErr = error.password;
     const addressErr = error.address;
     const cpErr = error.cp;
@@ -97,9 +118,10 @@ export class UpdateFormComponent implements OnInit {
         if (passwordErr.hasError('required')) {
           return 'Vous devez choisir un mot de passe';
         }
-        return passwordErr.hasError('pattern')
-          ? 'Le mot de passe dois contenir 8 caractères avec un chiffre et une lettre majuscule'
-          : '';
+      case 'confirmPassword':
+        if (confirmPassErr.hasError('mustMatch')) {
+          return 'Les mots de passe ne correspondent pas';
+        }
       case 'address':
         if (addressErr.hasError('required')) {
           return 'Vous devez entrer votre adresse';

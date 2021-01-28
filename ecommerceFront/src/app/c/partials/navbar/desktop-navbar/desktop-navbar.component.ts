@@ -26,7 +26,6 @@ export class DesktopNavbarComponent implements OnInit {
     this.curUser = localStorage.getItem('CURRENT_USER')
       ? JSON.parse(localStorage.getItem('CURRENT_USER'))
       : '';
-    console.log(this.curUser);
     this._nframe.drop();
     this._cart.cartObservable.subscribe((data: CartItem[]) => {
       this.cart = data;
