@@ -1,7 +1,27 @@
+<<<<<<< Updated upstream
+=======
+$charter-blue: #0a1f35;
+$charter-pink: #ff5258;
+>>>>>>> Stashed changes
 .internalMatGrid {
-  min-width: 100%;
+    min-width: 100%;
 }
+
 .width {
-  width: 80%;
-  margin: auto;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 10em;
 }
+<<<<<<< Updated upstream
+=======
+
+.mat-charter-pink {
+    background-color: $charter-pink;
+    color: white;
+}
+
+.mat-charter-blue {
+    background-color: $charter-blue;
+    color: white;
+}
+>>>>>>> Stashed changes
