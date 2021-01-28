@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { NotificationsService } from './notifications.service';
 
 export interface login {
   mail: string;
@@ -26,7 +27,8 @@ export class UsersService {
   }
   constructor(
     private _http: HttpClient,
-    private _apiSettings: ApiSettingsService
+    private _apiSettings: ApiSettingsService,
+    private _toastr: NotificationsService
   ) {}
 
   private _option = this._apiSettings.option;
@@ -43,11 +45,12 @@ export class UsersService {
   }
 
   // Création de compte
-  register(form: FormGroup) {
+  register(form: FormGroup): void {
     let http = this._http
       .post(this._url.concat('/register'), form.value, this._option)
       .subscribe((data: CurrentUser) => {
         this.userSubject.next(data);
+        () => this._toastr.showError('Erreur', "L'adresse email existe déjà");
       });
   }
 
@@ -57,7 +60,11 @@ export class UsersService {
       .post(this._url.concat('/login'), form.value, this._option)
       .subscribe(
         (data: CurrentUser) => this.userSubject.next(data),
-        (error: HttpErrorResponse) => this.userSubject.next(error)
+        () =>
+          this._toastr.showError(
+            'Erreur',
+            'Mot de passe et/ou adresse email incorrect'
+          )
       );
   }
   delete(id: number): Observable<any> {
