@@ -1,13 +1,12 @@
 $charter-blue: #0a1f35;
 $charter-pink: #ff5258;
 
-.internalMatGrid {
-  min-width: 100%;
-}
 .width {
   width: 80%;
   margin: auto;
+  padding-bottom: 10em;
 }
+
 .mat-charter-pink {
   background-color: $charter-pink;
   color: white;
@@ -16,4 +15,14 @@ $charter-pink: #ff5258;
 .mat-charter-blue {
   background-color: $charter-blue;
   color: white;
+}
+
+@media (min-width: 960px) {
+  .sec1 {
+    margin-right: 6em;
+    margin-left: 6em;
+  }
+  .sec2 {
+    margin-left: 6em;
+  }
 }

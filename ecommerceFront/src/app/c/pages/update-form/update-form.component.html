@@ -1,96 +1,81 @@
 <div class="width">
-  <h1 style="text-align: center">Mettre à jour votre compte</h1>
-  <mat-grid-list cols="12" rowHeight="5:1">
-    <form
-      [formGroup]="authForm"
-      class="login-container"
-      (ngSubmit)="update.update(authForm)"
-    >
-      <mat-grid-list cols="2" rowHeight="500px">
-        <mat-grid-tile>
-          <div class="internalMatGrid">
-            <mat-grid-list cols="2" rowHeight="100px">
-              <mat-grid-tile [colspan]="2">
-                <input type="hidden" name="id" formControlName="id" />
-                <mat-form-field appearance="outline">
-                  <mat-label>Email</mat-label>
-                  <input
-                    matInput
-                    type="email"
-                    placeholder="Entrez votre email"
-                    formControlName="email"
-                  />
-                  <mat-error *ngIf="authForm.controls.email.invalid">{{
-                    getErrorMessage("email")
-                  }}</mat-error>
-                </mat-form-field></mat-grid-tile
+  <h1 style="text-align: center" class="--py-2">Mettre à jour votre compte</h1>
+  <div class="bounds">
+    <form [formGroup]="authForm" (ngSubmit)="update.update(authForm)">
+      <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+        <div fxFlex="30" class="sec1" fxFlex.xs="100">
+          <div class="content" fxLayout="column" fxFlexFill>
+            <mat-form-field class="--px-1" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                placeholder="Entrez votre email"
+                formControlName="email"
+              />
+              <mat-error *ngIf="authForm.controls.email.invalid">{{
+                getErrorMessage("email")
+              }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="--px-1" appearance="outline">
+              <mat-label>Mot de passe</mat-label>
+              <input
+                matInput
+                type="password"
+                placeholder="Entrez votre mot de passe"
+                formControlName="password"
+              />
+              <mat-error *ngIf="authForm.controls.password.invalid">{{
+                getErrorMessage("password")
+              }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="--px-1" appearance="outline">
+              <mat-label>Confirmation de mot de passe</mat-label>
+              <input
+                matInput
+                type="password"
+                placeholder="Confirmez votre mot de passe"
+                formControlName="confirmPassword"
+              />
+              <mat-error *ngIf="authForm.controls.confirmPassword.invalid">
+                {{ getErrorMessage("confirmPassword") }}</mat-error
               >
-              <mat-grid-tile [colspan]="2">
-                <mat-form-field appearance="outline">
-                  <mat-label>Mot de passe</mat-label>
-                  <input
-                    matInput
-                    type="password"
-                    placeholder="Entrez votre mot de passe"
-                    formControlName="password"
-                  />
-                  <mat-error *ngIf="authForm.controls.password.invalid">{{
-                    getErrorMessage("password")
-                  }}</mat-error>
-                </mat-form-field></mat-grid-tile
-              >
-              <mat-grid-tile [colspan]="2">
-                <mat-form-field appearance="outline">
-                  <mat-label>Confirmation de mot de passe</mat-label>
-                  <input
-                    matInput
-                    type="password"
-                    placeholder="Confirmez votre mot de passe"
-                    formControlName="confirmPassword"
-                  />
-
-                  <mat-error *ngIf="authForm.controls.confirmPassword.invalid">
-                    {{ getErrorMessage("confirmPassword") }}</mat-error
-                  >
-                </mat-form-field></mat-grid-tile
-              >
-            </mat-grid-list>
+            </mat-form-field>
           </div>
-        </mat-grid-tile>
+        </div>
 
-        <mat-grid-tile>
-          <div class="internalMatGrid">
-            <mat-grid-list cols="2" rowHeight="100px">
-              <mat-grid-tile [colspan]="1">
-                <mat-form-field appearance="outline">
-                  <mat-label>Nom</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="Entrez votre Nom"
-                    formControlName="lastname"
-                  />
-                  <mat-error *ngIf="authForm.controls.lastname.invalid">{{
-                    getErrorMessage("lastname")
-                  }}</mat-error>
-                </mat-form-field></mat-grid-tile
+        <div fxFlex="30" class="sec2" fxFlex.xs="100">
+          <div class="content" fxLayout="column" fxFlexFill>
+            <div class="content" fxLayout="row" fxLayout.xs="column">
+              <mat-form-field class="--px-1" appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Entrez votre Nom"
+                  formControlName="lastname"
+                />
+                <mat-error *ngIf="authForm.controls.lastname.invalid">{{
+                  getErrorMessage("lastname")
+                }}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="--px-1" appearance="outline">
+                <mat-label>Prénom</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Entrez votre Prénom"
+                  formControlName="firstname"
+                />
+                <mat-error *ngIf="authForm.controls.firstname.invalid">{{
+                  getErrorMessage("firstname")
+                }}</mat-error></mat-form-field
               >
-              <mat-grid-tile [colspan]="1">
-                <mat-form-field appearance="outline">
-                  <mat-label>Prénom</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="Entrez votre Prénom"
-                    formControlName="firstname"
-                  />
-                  <mat-error *ngIf="authForm.controls.firstname.invalid">{{
-                    getErrorMessage("firstname")
-                  }}</mat-error></mat-form-field
-                ></mat-grid-tile
-              >
-              <mat-grid-tile [colspan]="2">
-                <mat-form-field appearance="outline">
+            </div>
+            <div class="content" fxLayout="row">
+              <div class="content" fxLayout="column" fxFlexFill>
+                <mat-form-field class="--px-1" appearance="outline">
                   <mat-label>Adresse</mat-label>
                   <input
                     matInput
@@ -101,47 +86,48 @@
                   <mat-error *ngIf="authForm.controls.address.invalid">{{
                     getErrorMessage("address")
                   }}</mat-error></mat-form-field
-                ></mat-grid-tile
+                >
+              </div>
+            </div>
+            <div class="content" fxLayout="row" fxLayout.xs="column">
+              <mat-form-field class="--px-1" appearance="outline">
+                <mat-label>Code postal</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Entrez votre code postal"
+                  formControlName="cp"
+                />
+                <mat-error *ngIf="authForm.controls.cp.invalid">{{
+                  getErrorMessage("cp")
+                }}</mat-error></mat-form-field
               >
-              <!-- <mat-grid-tile [colspan]="1"></mat-grid-tile> -->
-              <mat-grid-tile [colspan]="1">
-                <mat-form-field appearance="outline">
-                  <mat-label>Code postal</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="Entrez votre code postal"
-                    formControlName="cp"
-                  />
-                  <mat-error *ngIf="authForm.controls.cp.invalid">{{
-                    getErrorMessage("cp")
-                  }}</mat-error></mat-form-field
-                ></mat-grid-tile
-              >
-              <mat-grid-tile [colspan]="1">
-                <mat-form-field appearance="outline">
-                  <mat-label>Ville</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    placeholder="Entrez votre ville"
-                    formControlName="town"
-                  />
-                  <mat-error *ngIf="authForm.controls.town.invalid">{{
-                    getErrorMessage("town")
-                  }}</mat-error>
-                </mat-form-field></mat-grid-tile
-              >
-            </mat-grid-list>
+              <mat-form-field class="--px-1" appearance="outline">
+                <mat-label>Ville</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Entrez votre ville"
+                  formControlName="town"
+                />
+                <mat-error *ngIf="authForm.controls.town.invalid">{{
+                  getErrorMessage("town")
+                }}</mat-error>
+              </mat-form-field>
+            </div>
           </div>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-divider></mat-divider>
-      <mat-grid-tile [colspan]="12" [rowspan]="3">
-        <button type="submit" mat-raised-button color="charter-pink">
+        </div>
+      </div>
+      <div class="--container --g-j-center --p-1">
+        <button
+          type="submit"
+          mat-raised-button
+          color="charter-pink"
+          class="--w-20"
+        >
           Envoyer
         </button>
-      </mat-grid-tile>
+      </div>
     </form>
-  </mat-grid-list>
+  </div>
 </div>
