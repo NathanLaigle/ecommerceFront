@@ -1,81 +1,80 @@
 $charter-blue: #0a1f35;
 $charter-pink: #ff5258;
 .plant-block {
-  background: padding-box
-    url("../../../../assets/images/sunny-couch-and-shelved-plants.jpg") center
-    center / cover no-repeat;
-  @media (max-width: 768px) {
-    border-radius: 0;
-  }
+    background: padding-box url("../../../../assets/images/sunny-couch-and-shelved-plants.jpg") center center / cover no-repeat;
+    @media (max-width: 768px) {
+        border-radius: 0;
+    }
 }
 
 .mat-charter-pink {
-  background-color: $charter-pink;
-  color: white;
+    background-color: $charter-pink;
+    color: white;
 }
 
 .mat-charter-blue {
-  background-color: $charter-blue;
-  color: white;
+    background-color: $charter-blue;
+    color: white;
 }
 
 .titres-items {
-  position: absolute;
-  right: 5px;
+    position: absolute;
+    right: 5px;
 }
 
 .items {
-  position: absolute;
-  left: 5px;
+    position: absolute;
+    left: 5px;
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 .plant-block-container {
-  @media (max-width: 768px) {
-    padding: 0;
-  }
+    @media (max-width: 768px) {
+        padding: 0;
+    }
 }
 
 mat-card {
-  margin: 2% auto;
+    margin: 2% auto;
 }
+
 
 /*
  * Home styles
  */
 
 .plant-block-container {
-  @media (max-width: 768px) {
-    padding: 0;
-  }
+    @media (max-width: 768px) {
+        padding: 0;
+    }
 }
 
 .content {
-  text-align: center;
-  h1 {
-    font-size: 3.5em;
-  }
+    text-align: center;
+    h1 {
+        font-size: 3.5em;
+    }
 }
 
 .category-display {
-  padding-left: 2em;
-  padding-right: 1em;
-  @media (max-width: 768px) {
-    width: max-content;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+    padding-left: 2em;
+    padding-right: 1em;
+    @media (max-width: 768px) {
+        width: max-content;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 .category-container {
-  @media (max-width: 768px) {
-    width: 100%;
-    overflow: scroll;
-    &::-webkit-scrollbar {
-      display: none;
+    @media (max-width: 768px) {
+        width: 100%;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
-  }
 }
