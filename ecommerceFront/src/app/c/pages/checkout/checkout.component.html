@@ -15,9 +15,11 @@
                 <p>{{currentUser.cp}}</p>
             </div>
             <div class="--container --g-j-end">
-                <button class="--w-100 --cursor --round --p-1 --light bg-charter-pink">
-                    Modifier
-                </button>
+                <a [routerLink]="[ '/user/account' ]">
+                    <button class="--w-100 --cursor --round --p-1 --light bg-charter-pink">
+                        Modifier
+                    </button>
+                </a>
             </div>
         </div>
         <div class="--container --gap-2 --p-2 --round --light-shadow --bg-light">
@@ -34,12 +36,6 @@
             <!-- check cart content -->
             <div *ngIf="cart.length == 0">
                 Votre panier est vide
-            </div>
-
-            <div class="--container --g-j-end">
-                <button class="--w-100 --cursor --round --p-1 --light bg-charter-pink">
-                    Modifier
-                </button>
             </div>
         </div>
         <div class="paypal --container --g-a-center --g-j-center --vh-60 ">
